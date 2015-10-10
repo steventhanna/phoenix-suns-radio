@@ -21,8 +21,7 @@ module.exports = {
     var accountDetails = {
       email: post.email,
       password: post.password,
-      displayName: post.firstName + " "
-      post.lastName,
+      displayName: post.firstName + " " + post.lastName,
       firstName: post.firstName,
       lastName: post.lastName
     };
