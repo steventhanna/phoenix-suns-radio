@@ -1,0 +1,108 @@
+body {
+  padding-bottom: 70px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-default {
+  background-color: #391366;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-color: #391366;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #fff;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+}
+
+.navbar-right {
+  padding-bottom: 3px;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  color: #fff;
+  background-color: #391366;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-color: #fff;
+}
+
+.header {
+  background-color: #391366;
+  color: #fff;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 75px;
+}
+
+.header h1 {
+  font-weight: 300;
+  font-size: 46px;
+  color: #fff;
+}
+
+.header h3 {
+  font-weight: 300;
+  margin-bottom: 50px;
+
+}
+
+.row-title {
+  text-align: center;
+  margin-top: 75px;
+}
+
+.row-title h1 {
+  color: #323232;
+  font-weight: 300;
+  font-size: 38px;
+}
+
+.cast-panel {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+hr {
+  height: 1px;
+  background: #3f3f3f;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.cast-panel h1 {
+  color: #000;
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+.cast-panel h3 {
+  color: #414141;
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+.cast-panel p {
+  font-size: 16px;
+  color: #000;
+}
