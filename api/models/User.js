@@ -11,9 +11,9 @@ module.exports = {
 
   attributes: {
     //The User's email address, also used as the username on the site
-    username: {
+    email: {
       required: true,
-      type: 'string',
+      type: 'email',
       unique: true
     },
 

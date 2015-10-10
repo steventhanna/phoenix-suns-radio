@@ -5,17 +5,19 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var passport = require('passport');
+
 module.exports = {
   create: function(req, res) {
     var url = req.url;
-    var username = (url.substring('/superuser/create'.length));
+    var email = (url.substring('/superuser/create/'.length));
 
-    if (username == "" || username == " " || username == undefined) {
+    if (email == "" || email == " " || email == undefined) {
       res.serverError();
-      console.log("There was an error with the choosen superuser username");
+      console.log("There was an error with the choosen superuser email");
     } else {
       User.create({
-        username: username,
+        email: email,
         password: "unicorn"
       }).exec(function(err, user) {
         if (err || user == undefined) {
@@ -23,6 +25,7 @@ module.exports = {
           console.log("Error = " + err);
           res.serverError();
         } else {
+          console.log(email);
           console.log("Successfully created the new superuser with default password.");
           res.redirect('/admin');
         }

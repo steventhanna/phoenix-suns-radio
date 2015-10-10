@@ -37,15 +37,21 @@ module.exports.routes = {
     action: 'home'
   },
 
-  '/about': {
+  'GET /about': {
     controller: 'landing',
     action: 'about'
   },
 
-  '/admin': {
+  'GET /admin': {
     controller: 'user',
     action: 'admin'
   },
+
+  'POST /login': {
+    controller: 'auth',
+    action: 'login'
+  },
+
 
 
   /***************************************************************************
