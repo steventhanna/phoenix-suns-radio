@@ -42,6 +42,12 @@ module.exports.routes = {
     action: 'about'
   },
 
+  '/admin': {
+    controller: 'user',
+    action: 'admin'
+  },
+
+
   /***************************************************************************
    *                                                                          *
    * Custom routes here...                                                    *

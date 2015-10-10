@@ -1,0 +1,28 @@
+body {
+  background-color: #391366;
+  color: #fff;
+}
+
+.login-box {
+  margin-top: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 50%;
+}
+
+.login-box .body {
+  width: 50%;
+}
+
+.login-box .title {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  font-weight: 300;
+}
+
+.input-group {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
