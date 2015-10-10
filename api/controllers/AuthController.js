@@ -19,7 +19,7 @@ module.exports = {
     var post = req.body;
 
     var accountDetails = {
-      email: post.email,
+      username: post.username,
       password: post.password,
       displayName: post.firstName + " " + post.lastName,
       firstName: post.firstName,

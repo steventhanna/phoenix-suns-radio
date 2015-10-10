@@ -11,9 +11,9 @@ module.exports = {
 
   attributes: {
     //The User's email address, also used as the username on the site
-    email: {
+    username: {
       required: true,
-      type: 'email',
+      type: 'string',
       unique: true
     },
 
@@ -25,13 +25,11 @@ module.exports = {
 
     //The users first name (given name)
     firstName: {
-      required: true,
       type: 'string'
     },
 
     //The user's last name (Family name)
     lastName: {
-      required: true,
       type: 'string'
     },
 
