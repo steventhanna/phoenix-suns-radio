@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/styles/login.css">
+<script src="/js/pages/adminCreateAccount.js"></script>
+
+<div class="background">
+  <div class="container">
+    <div class="login-box">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="title">
+            <h1>Create Account</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="body">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <span class="input-group-addon" id="email-addon">@</span>
+            <input type="email" class="form-control" id="email" placeholder="email@example.com" aria-describedby="email-addon">
+          </div>
+          <label for="password">Password</label>
+          <div class="input-group">
+            <span class="input-group-addon" id="password-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" id="password" placeholder="******" aria-describedby="password-addon">
+          </div>
+          <label for="confirm-password">Confirm Password</label>
+          <div class="input-group">
+            <span class="input-group-addon" id="password-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" id="confirm-password" placeholder="******" aria-describedby="password-addon">
+          </div>
+          <label for="access-code">Secret Access Code</label>
+          <div class="input-group">
+            <span class="input-group-addon" id="password-addon"><i class="fa fa-user-secret"></i></span>
+            <input type="password" class="form-control" id="access-code" placeholder="******" aria-describedby="password-addon">
+          </div>
+          <a id="createAccountButton" style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-block btn-success">Create Account</a>
+          <center>
+            <small><a href="/admin">Already have an account?</a></small>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

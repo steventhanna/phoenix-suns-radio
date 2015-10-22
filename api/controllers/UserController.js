@@ -11,4 +11,8 @@ module.exports = {
     res.view('admin/login');
   },
 
+  createAccount: function(req, res) {
+    res.view('admin/createAccount');
+  },
+
 };

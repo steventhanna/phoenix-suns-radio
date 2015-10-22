@@ -10,19 +10,33 @@ body {
   padding-top: 50px;
   padding-bottom: 50px;
   width: 50%;
+  margin-left: 24%;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .login-box .body {
-  width: 50%;
+  /*width: 50%;*/
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .login-box .title {
   font-family: 'Open Sans', sans-serif;
   color: #000;
   font-weight: 300;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .input-group {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /*width: 75%;*/
+}
+
+label {
+    color: #000;
+    text-align: left;
+    margin-bottom: 0px;
 }

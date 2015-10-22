@@ -52,6 +52,16 @@ module.exports.routes = {
     action: 'login'
   },
 
+  'GET /create-account': {
+    controller: 'user',
+    action: 'createAccount'
+  },
+
+  'POST /create-account': {
+    controller: 'auth',
+    action: 'createAccount'
+  },
+
 
 
   /***************************************************************************
