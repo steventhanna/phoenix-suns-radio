@@ -23,16 +23,6 @@ module.exports = {
       type: 'string'
     },
 
-    //The users first name (given name)
-    firstName: {
-      type: 'string'
-    },
-
-    //The user's last name (Family name)
-    lastName: {
-      type: 'string'
-    },
-
     //Remove the password before it is returned as a JSON object
     toJSON: function() {
       var obj = this.toObject();

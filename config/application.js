@@ -19,6 +19,7 @@ function findByUsername(username, fn) {
       console.log("Error Code 2256");
       return fn("USER NOT FOUND ON DATABASE! ERROR 2256.", null);
     } else {
+      console.log("LOOKUP: " + user);
       return fn(null, user);
     }
   });
@@ -53,8 +54,9 @@ passport.deserializeUser(function(id, done) {
 //credentials (in this case, a username and password), and invoke a callback,
 //with a user object
 passport.use(new LocalStrategy(
+
   function(username, password, done) {
-    //asynchronous verification, for effect...
+    // asynchronous verification, for effect...
     process.nextTick(function() {
       //Find the user by username. If there is no user with the given username, or the password is not correct, set the user to false to indicate failure and send some sort of flash message or newer equaivalent
       //Otherwise, return an authenticated user.

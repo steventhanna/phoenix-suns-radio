@@ -47,39 +47,6 @@ module.exports = {
     }
   },
 
-
-  signup: function(req, res) {
-    var post = req.body;
-
-    var accountDetails = {
-      username: post.username,
-      password: post.password,
-      displayName: post.firstName + " " + post.lastName,
-      firstName: post.firstName,
-      lastName: post.lastName
-    };
-
-    User.create(accountDetails).exec(function(err, user) {
-      if (err || user == undefined) {
-        console.log("There was an error creating the user account on the database.");
-        console.log("Error = " + err);
-        res.serverError();
-      } else {
-        req.logIn(user, function(err) {
-          if (err) {
-            console.log("There was an error when trying to login the user after the account was just created.");
-            console.log("Error = " + err);
-            res.serverError();
-          } else {
-            res.send({
-              success: true
-            });
-          }
-        });
-      }
-    });
-  },
-
   login: function(req, res) {
     passport.authenticate('local', function(err, user, info) {
       if (err || (!user)) {

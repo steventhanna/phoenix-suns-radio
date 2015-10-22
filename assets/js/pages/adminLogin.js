@@ -1,12 +1,13 @@
 $(document).ready(function() {
   $("#loginButton").click(function() {
-    var username = $("#username").val();
+    var email = $("#email").val();
     var password = $("#password").val();
 
     var postObj = {
-      username: username,
+      email: email,
       password: password
     };
+    console.log(postObj);
 
     $.ajax({
       type: 'POST',
@@ -14,11 +15,16 @@ $(document).ready(function() {
       data: postObj,
       success: function(data) {
         console.log(data);
-        alert("Success");
+        if (data.success == true) {
+          swal("Success", "You have been logged in.", "success");
+        } else {
+          swal("Uh-Oh!", "The account could not be logged in.", "error");
+        }
+
       },
       error: function(data) {
         console.log(data);
-        alert('Error');
+        swal("Uh-Oh!", "The account could not be logged in.", "error");
       }
     });
   });
