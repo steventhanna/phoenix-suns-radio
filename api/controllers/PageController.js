@@ -1,7 +1,7 @@
 /**
  * PageController
- *
- * @description :: Server-side logic for managing pages
+ * @author      :: Steven Hanna http://github.com/steventhanna
+ * @description :: Server-side logic for managing the overall page that houses the site contents
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

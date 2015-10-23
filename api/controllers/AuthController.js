@@ -1,7 +1,7 @@
 /*()
  * AuthController
- *
- * @description :: Server-side logic for managing auths
+ * @author      :: Steven Hanna http://github.com/steventhanna
+ * @description :: Server-side logic for managing user authentication
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

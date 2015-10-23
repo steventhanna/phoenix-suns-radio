@@ -1,6 +1,6 @@
 /**
  * BroadcastController
- *
+ * @author      :: Steven Hanna http://github.com/steventhanna
  * @description :: Server-side logic for managing broadcasts
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
