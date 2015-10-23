@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -23,6 +24,37 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+  border-bottom-style: none;
+}
+
+/**
+ * Navbar styling
+ */
+
+ .navbar {
+   border-bottom-style: none;
+ }
+.navbar-inverse {
+  background-color: #391366;
+  border-bottom-style: none;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #9d9d9d;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background-color: #fff;
+  color: #391366;
 }
 
 /*
@@ -44,7 +76,7 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
+    background-color: #fff;
     border-right: 1px solid #eee;
   }
 }
@@ -58,12 +90,14 @@ body {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #000;
+  font-size: 16px;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #391366;
 }
 
 

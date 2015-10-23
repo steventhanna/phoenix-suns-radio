@@ -83,6 +83,13 @@ module.exports.routes = {
   },
 
 
+  // TEST BACKEND DESIGN
+  '/admin-test': {
+    controller: 'landing',
+    action: 'testAdmin'
+  },
+
+
 
   /***************************************************************************
    *                                                                          *

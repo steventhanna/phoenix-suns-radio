@@ -12,4 +12,8 @@ module.exports = {
     res.view('landing/home');
   },
 
+  testAdmin: function(req, res) {
+    res.view('admin/dash');
+  }
+
 };
