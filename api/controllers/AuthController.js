@@ -37,6 +37,7 @@ module.exports = {
               res.serverError();
             } else {
               console.log(user);
+              // TODO :: Redirect user to admin page
               res.send({
                 success: true
               });

@@ -24,6 +24,7 @@ module.exports = {
   /**
    * Handle the editAccount request
    */
+  // TODO :: Check hashing for changing password
   editAccount: function(req, res) {
     var post = req.body;
 
@@ -92,7 +93,7 @@ module.exports = {
             console.log("Error Code: 00002");
           } else {
             // Look up all the broadcasts
-            // TODO :: Test this t osee if it even works.
+            // TODO :: Test this to see if it even works.
             var broadcastArr = currentPage.broadcasts;
             var broadCastObj;
             if (broadCastArr.length > broadCastObj.length) {
