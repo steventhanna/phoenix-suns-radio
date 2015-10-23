@@ -18,6 +18,11 @@ module.exports = {
       type: 'array',
       defualtsTo: '[]',
       required: true
+    },
+
+    // The content for the about section
+    about: {
+      type: 'string',
     }
   }
 };

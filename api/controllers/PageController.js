@@ -12,7 +12,8 @@ module.exports = {
 
     var pageData = {
       pid: Math.floor(Math.random() * 1000000000000000000000),
-      broadcasts: []
+      broadcasts: [],
+      about: "";
     };
 
     Page.create(pageData).exec(function(err, newPage) {
@@ -26,5 +27,37 @@ module.exports = {
         });
       }
     });
-  }
+  },
+
+  editAbout: function(req, res) {
+    var post = req.body;
+    Page.findOne({
+      pid: post.pid
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        console.log("There was an error looking up the overall page.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00002");
+      } else {
+        if (post.about != undefined && post.about !== " ") {
+          currentPage.about = post.about;
+          currentPage.save(function(err) {
+            if (err) {
+              console.log("There was an error saving the overall page with about information.");
+              console.log("Error = " + err);
+              console.log("Error Code: 0011");
+              res.send({
+                success: false,
+                error: true
+              });
+            } else {
+              res.send({
+                success: true
+              });
+            }
+          });
+        }
+      }
+    });
+  },
 };
