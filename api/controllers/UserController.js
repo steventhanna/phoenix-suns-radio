@@ -84,8 +84,9 @@ module.exports = {
       } else {
         // User retrieved
         // Get Page
+        // TODO :: Fix this... Just realized that getting a PID is going to be a problem...
         Page.findOne({
-          pid: post.pid
+          pid: 'phoenix-suns-radio'
         }).exec(function(err, currentPage) {
           if (err || currentPage == undefined) {
             console.log("There was an error looking up the overall page.");
@@ -132,4 +133,32 @@ module.exports = {
     });
   },
 
+  overview: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError():
+      } else {
+        Page.findOne({
+          pid: 'phoenix-suns-radio'
+        }).exec(function(err, currentPage) {
+          if (err || currentPage == undefined) {
+            console.log("There was an error looking up the overall page.");
+            console.log("Error = " + err);
+            console.log("Error Code: 00002");
+          } else {
+            // Get total amount of broadcasts
+            var totalBroadcasts = currentPage.broadcasts.length;
+            res.view('admin/dash', {
+              totalBroadcasts: totalBroadcasts
+            });
+          }
+        });
+      }
+    });
+  },
 };

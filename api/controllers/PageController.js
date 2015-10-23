@@ -11,7 +11,7 @@ module.exports = {
     var post = req.body;
 
     var pageData = {
-      pid: Math.floor(Math.random() * 1000000000000000000000),
+      pid: "phoenix-suns-radio",
       broadcasts: [],
       about: "";
     };
@@ -32,7 +32,7 @@ module.exports = {
   editAbout: function(req, res) {
     var post = req.body;
     Page.findOne({
-      pid: post.pid
+      pid: 'phoenix-suns-radio'
     }).exec(function(err, currentPage) {
       if (err || currentPage == undefined) {
         console.log("There was an error looking up the overall page.");

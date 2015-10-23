@@ -37,7 +37,7 @@ module.exports = {
         res.serverError();
       } else {
         Page.findOne({
-          pid: post.pid
+          pid: 'phoenix-suns-radio'
         }).exec(function(err, currentPage) {
           if (err || currentPage == undefined) {
             console.log("There was an error looking up the overall page.");
@@ -111,7 +111,7 @@ module.exports = {
         res.serverError();
       } else {
         Page.findOne({
-          pid: post.pid
+          pid: 'phoenix-suns-radio'
         }).exec(function(err, currentPage) {
           if (err || currentPage == undefined) {
             console.log("There was an error looking up the overall page.");
