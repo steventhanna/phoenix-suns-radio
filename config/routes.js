@@ -67,9 +67,19 @@ module.exports.routes = {
     action: 'dashboard'
   },
 
-  'POST /post-broadcast': {
-    controller: 'user',
-    action: 'postBroadcast'
+  'POST /broadcast/new': {
+    controller: 'broadcast',
+    action: 'new'
+  },
+
+  'POST /broadcast/delete': {
+    controller: 'broadcast',
+    action: 'delete'
+  },
+
+  'POST /page/new': {
+    controller: 'page',
+    action: 'new'
   },
 
 
