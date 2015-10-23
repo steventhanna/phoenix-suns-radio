@@ -62,6 +62,16 @@ module.exports.routes = {
     action: 'createAccount'
   },
 
+  'GET /dashboard': {
+    controller: 'user',
+    action: 'dashboard'
+  },
+
+  'POST /post-broadcast': {
+    controller: 'user',
+    action: 'postBroadcast'
+  },
+
 
 
   /***************************************************************************
