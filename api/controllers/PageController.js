@@ -11,9 +11,9 @@ module.exports = {
     var post = req.body;
 
     var pageData = {
-      pid: Math.floor(Math.random() * 1000000000000000000000);
-      broadcasts: [];
-    }
+      pid: Math.floor(Math.random() * 1000000000000000000000),
+      broadcasts: []
+    };
 
     Page.create(pageData).exec(function(err, newPage) {
       if (err || newPage == undefined) {

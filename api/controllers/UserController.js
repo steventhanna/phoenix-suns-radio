@@ -66,7 +66,7 @@ module.exports = {
               res.send({
                 user: user,
                 // Broadcast obj should be empty
-                broadCastObj: undefined;
+                broadCastObj: undefined
               });
             }
           }
