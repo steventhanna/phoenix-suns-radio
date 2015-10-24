@@ -84,7 +84,6 @@ module.exports = {
       } else {
         // User retrieved
         // Get Page
-        // TODO :: Fix this... Just realized that getting a PID is going to be a problem...
         Page.findOne({
           pid: 'phoenix-suns-radio'
         }).exec(function(err, currentPage) {
@@ -106,6 +105,7 @@ module.exports = {
                     console.log("There was an error looking up the current broadcast");
                     console.log("Error = " + err);
                     console.log("Error CodeL 00003");
+                    res.serverError();
                   } else {
                     broadCastObj.push(currentBroadcast);
                   }
@@ -150,12 +150,66 @@ module.exports = {
             console.log("There was an error looking up the overall page.");
             console.log("Error = " + err);
             console.log("Error Code: 00002");
+            res.serverError();
           } else {
             // Get total amount of broadcasts
             var totalBroadcasts = currentPage.broadcasts.length;
             res.view('admin/dash', {
               totalBroadcasts: totalBroadcasts
             });
+          }
+        });
+      }
+    });
+  },
+
+  broadcast: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError():
+      } else {
+        Page.findOne({
+          pid: 'phoenix-suns-radio'
+        }).exec(function(err, currentPage) {
+          if (err || currentPage == undefined) {
+            console.log("There was an error looking up the overall page.");
+            console.log("Error = " + err);
+            console.log("Error Code: 00002");
+            res.serverError();
+          } else {
+            var broadList = currentPage.broadcasts;
+            var broadObj;
+            if (broadList.length > broadObj.length) {
+              for (var i = 0; i < broadList.length; i++) {
+                Broadcast.findOne({
+                  bid: broadList[i]
+                }).exec(function(err, currentBroadcast) {
+                  if (err || currentBroadcast == undefined) {
+                    console.log("There was an error looking up the current broadcast");
+                    console.log("Error = " + err);
+                    console.log("Error CodeL 00003");
+                    res.serverError();
+                  } else {
+                    broadObj.push(currentBroadcast);
+                  }
+                });
+              });
+            if (broadList.length == broadObj.length) {
+              res.view('admin/broadcasts', {
+                broadcasts: broadObj,
+                user: user
+              });
+            } else {
+              res.view('admin/broadasts', {
+                broadcasts: undefined,
+                user: user
+              });
+            }
           }
         });
       }
