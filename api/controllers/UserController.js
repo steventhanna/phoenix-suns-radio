@@ -182,12 +182,12 @@ module.exports = {
             console.log("Error Code: 00002");
             res.serverError();
           } else {
-            var broadList = currentPage.broadcasts;
-            var broadObj;
-            if (broadList.length > broadObj.length) {
-              for (var i = 0; i < broadList.length; i++) {
+            var broadcastList = currentPage.broadcasts;
+            var broadObj = [];
+            if (broadcastList.length > broadObj.length) {
+              for (var i = 0; i < broadcastList.length; i++) {
                 Broadcast.findOne({
-                  bid: broadList[i]
+                  bid: broadcastList[i]
                 }).exec(function(err, currentBroadcast) {
                   if (err || currentBroadcast == undefined) {
                     console.log("There was an error looking up the current broadcast");
@@ -198,16 +198,25 @@ module.exports = {
                     broadObj.push(currentBroadcast);
                   }
                 });
-              });
-            if (broadList.length == broadObj.length) {
+              }
+              if (broadcastList.length == broadObj.length) {
+                res.view('admin/broadcasts', {
+                  user: user,
+                  broadcasts: broadObj,
+                  currentPage: 'broadcasts'
+                });
+              }
+            } else if (broadcastList.length == broadObj.length) {
               res.view('admin/broadcasts', {
+                user: user,
                 broadcasts: broadObj,
-                user: user
+                currentPage: 'broadcasts'
               });
             } else {
-              res.view('admin/broadasts', {
+              res.view('admin/broadcasts', {
+                user: user,
                 broadcasts: undefined,
-                user: user
+                currentPage: 'broadcasts'
               });
             }
           }
