@@ -171,7 +171,7 @@ module.exports = {
         console.log("There was an error looking up the logged in user.");
         console.log("Error = " + err);
         console.log("Error Code: 00001");
-        res.serverError():
+        res.serverError();
       } else {
         Page.findOne({
           pid: 'phoenix-suns-radio'
