@@ -13,7 +13,7 @@ module.exports = {
     var pageData = {
       pid: "phoenix-suns-radio",
       broadcasts: [],
-      about: "";
+      about: ""
     };
 
     Page.create(pageData).exec(function(err, newPage) {
