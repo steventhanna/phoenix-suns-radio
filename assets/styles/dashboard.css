@@ -2,12 +2,13 @@
  * Base structure
  */
 
+
 /* Move down content because we have a fixed navbar that is 50px tall */
+
 body {
   padding-top: 50px;
   font-family: 'Open Sans', sans-serif;
 }
-
 
 /*
  * Global add-ons
@@ -22,6 +23,7 @@ body {
  * Top navigation
  * Hide default border to remove 1px line.
  */
+
 .navbar-fixed-top {
   border: 0;
   border-bottom-style: none;
@@ -31,27 +33,23 @@ body {
  * Navbar styling
  */
 
- .navbar {
-   border-bottom-style: none;
- }
+.navbar {
+  border-bottom-style: none;
+}
 .navbar-inverse {
   background-color: #391366;
   border-bottom-style: none;
   color: #fff;
 }
-
 .navbar-inverse .navbar-brand {
   color: #fff;
 }
-
 .navbar-inverse .navbar-nav > li > a {
   color: #fff;
 }
-
 .navbar-inverse .navbar-nav > li > a:hover {
   color: #9d9d9d;
 }
-
 .navbar-inverse .navbar-nav > .active > a {
   background-color: #fff;
   color: #391366;
@@ -61,7 +59,9 @@ body {
  * Sidebar
  */
 
+
 /* Hide for mobile, show later */
+
 .sidebar {
   display: none;
 }
@@ -75,15 +75,18 @@ body {
     display: block;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
     background-color: #fff;
     border-right: 1px solid #eee;
   }
 }
 
 /* Sidebar navigation */
+
 .nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
+  margin-right: -21px;
+  /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
 }
@@ -93,13 +96,10 @@ body {
   color: #000;
   font-size: 16px;
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #391366;
 }
-
 
 /*
  * Main content
@@ -117,7 +117,6 @@ body {
 .main .page-header {
   margin-top: 0;
 }
-
 
 /*
  * Placeholder dashboard ideas
