@@ -13,6 +13,7 @@ module.exports = {
     var pageData = {
       pid: "phoenix-suns-radio",
       broadcasts: [],
+      blogs: [],
       about: ""
     };
 

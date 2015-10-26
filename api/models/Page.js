@@ -1,6 +1,7 @@
 /**
  * Page.js
  *
+ * @author      :: Steven Hanna http://github.com/steventhanna
  * @description :: Overall container for the website.  Holds all broadcast data.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
@@ -17,6 +18,12 @@ module.exports = {
     broadcasts: {
       type: 'array',
       defualtsTo: '[]',
+      required: true
+    },
+
+    blogs: {
+      type: 'array',
+      defaultsTo: '[]',
       required: true
     },
 
