@@ -46,6 +46,9 @@ module.exports = {
           user.password = post.password;
           changes = true;
         }
+        user.firstName = post.firstName;
+        user.lastName = post.lastName;
+        user.displayName = post.firstName + " " + post.lastName;
         if (changes == true) {
           user.save(function(err) {
             if (err) {

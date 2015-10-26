@@ -10,6 +10,19 @@ var bcrypt = require('bcrypt-nodejs');
 module.exports = {
 
   attributes: {
+
+    firstName: {
+      type: 'string'
+    },
+
+    lastName: {
+      type: 'string'
+    },
+
+    displayName: {
+      type: 'string'
+    },
+
     //The User's email address, also used as the username on the site
     email: {
       required: true,
