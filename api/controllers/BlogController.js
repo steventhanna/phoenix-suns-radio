@@ -67,7 +67,7 @@ module.exports = {
     var post = req.body;
 
     function updated(toCheck) {
-      if (toCheck == undefined || toCheck === "" || toCheck = " ") {
+      if (toCheck == undefined || toCheck === "" || toCheck === " ") {
         return false;
       } else {
         return true;
