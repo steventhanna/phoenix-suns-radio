@@ -32,4 +32,26 @@ describe('AuthController', function() {
         .expect(500, done)
     });
   });
+  describe('#login', function() {
+    it('should login to an account', function(done) {
+      request(sails.hooks.http.app)
+        .post('/login')
+        .send({
+          email: 'example@email.com',
+          password: 'password'
+        })
+        .expect(200, done)
+    });
+  });
+  describe('#login', function() {
+    it('should fail to login to an account', function(done) {
+      request(sails.hooks.http.app)
+        .post('/login')
+        .send({
+          email: 'example@email.com',
+          password: 'pass'
+        })
+        .expect(500, done)
+    });
+  });
 });

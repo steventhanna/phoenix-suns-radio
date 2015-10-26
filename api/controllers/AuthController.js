@@ -66,9 +66,11 @@ module.exports = {
         res.send({
           success: false,
           error: true,
-          errorMessage: "This user does not exist or there was some sort of error. ",
-          info: info
+          errorMessage: "This user does not exist or there was some sort of error.",
+          info: info,
+          status: 500
         });
+        res.serverError();
       } else if ((!err) && user) {
         req.logIn(user, function(err) {
           if (err) {
@@ -81,14 +83,17 @@ module.exports = {
             return;
           } else {
             res.send({
-              success: true
+              success: true,
+              status: 200
             });
           }
         });
       } else {
         res.send({
-          success: false
+          success: false,
+          status: 500
         });
+        res.serverError();
       }
     })(req, res);
   },
