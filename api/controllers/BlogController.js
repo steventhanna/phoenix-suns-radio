@@ -178,4 +178,60 @@ module.exports = {
     });
   },
 
+  blogposts: function(req, res) {
+    Page.findOne({
+      pid: "phoenix-suns-radio"
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        console.log("There was an error looking up the overall page.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00002");
+        res.serverError();
+      } else {
+        // Get all of the blog posts
+        var blogIds = currentPage.blogs;
+        var blogposts = [];
+        if (blogIds.length > blogposts.length) {
+          for (var i = 0; i < blogIds.length; i++) {
+            Blog.findOne({
+              blid: blogIds[i]
+            }).exec(function(err, currentBlog) {
+              if (err || currentBlog == undefined) {
+                console.log("There was an error looking up the blog post.");
+                console.log("Error = " + err);
+                console.log("Error Code: 0016");
+                res.serverError();
+              } else {
+                blogposts.push(currentBlog);
+              }
+            });
+          }
+          if (blogposts.length == blogIds.length) {
+            res.view('landing/blog', {
+              page: currentPage,
+              blogposts: blogposts,
+              currentPage: 'blog'
+            });
+          }
+        } else if (blogIds.length == blogposts.length) {
+          if (blogposts.length == blogIds.length) {
+            res.view('landing/blog', {
+              page: currentPage,
+              blogposts: blogposts,
+              currentPage: 'blog'
+            });
+          }
+        } else {
+          if (blogposts.length == blogIds.length) {
+            res.view('landing/blog', {
+              page: currentPage,
+              blogposts: undefined,
+              currentPage: 'blog'
+            });
+          }
+        }
+      }
+    });
+  },
+
 };
