@@ -1,5 +1,6 @@
 var Sails = require('sails'),
   sails;
+// var DB = require
 
 before(function(done) {
 
