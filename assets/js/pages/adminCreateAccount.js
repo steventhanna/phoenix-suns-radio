@@ -2,6 +2,8 @@ $(document).ready(function() {
   $("#createAccountButton").click(function() {
     var email = $("#email").val();
     var password = $("#password").val();
+    var firstName $("#firstName").val();
+    var lastName = $("#lastName").val();
     var passwordConfirmation = $("#confirm-password").val();
     var accessCode = $("#access-code").val();
 
@@ -10,6 +12,14 @@ $(document).ready(function() {
       swal("Uh-Oh!", "Some fields were left blank.", "error");
     }
     if (password == null || password == undefined || password == " ") {
+      swal("Uh-Oh!", "Some fields were left blank.", "error");
+    }
+
+    if (firstName == null || firstName == undefined || firstName == " ") {
+      swal("Uh-Oh!", "Some fields were left blank.", "error");
+    }
+
+    if (lastName == null || lastName == undefined || lastName == " ") {
       swal("Uh-Oh!", "Some fields were left blank.", "error");
     }
 
@@ -31,6 +41,8 @@ $(document).ready(function() {
     if (error == false) {
       var postObj = {
         email: email,
+        firstName: firstName,
+        lastName: lastName,
         password: password,
         accessCode: accessCode
       };

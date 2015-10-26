@@ -67,7 +67,8 @@ module.exports = {
                 console.log("Error Code: 00004");
                 res.send({
                   success: false,
-                  error: true
+                  error: true,
+                  status: 500
                 });
               } else {
                 if (currentPage.broadcasts == null || currentPage.broadcasts == undefined) {
@@ -82,11 +83,13 @@ module.exports = {
                     console.log("Error Code: 00005");
                     res.send({
                       success: false,
-                      error: true
+                      error: true,
+                      status: 500
                     });
                   } else {
                     res.send({
-                      success: true
+                      success: true,
+                      status: 200
                     });
                   }
                 });
