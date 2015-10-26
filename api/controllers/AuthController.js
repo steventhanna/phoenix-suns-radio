@@ -21,6 +21,9 @@ module.exports = {
     var accountDetails = {
       email: post.email,
       password: post.password,
+      firstName: post.firstName,
+      lastName: post.lastName,
+      displayName: post.firstName + " " + post.lastName
     };
 
     if (post.accessCode === "gorilla") {
@@ -39,12 +42,16 @@ module.exports = {
               console.log(user);
               // TODO :: Redirect user to admin page
               res.send({
-                success: true
+                success: true,
+                status: 200
               });
             }
           });
         }
       });
+    } else {
+      console.log("Access code not correct... Eventually change this");
+      res.serverError();
     }
   },
 
