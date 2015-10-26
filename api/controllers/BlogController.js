@@ -127,4 +127,55 @@ module.exports = {
     });
   },
 
+  delete: function(req, res) {
+    var post = req.body;
+    Page.findOne({
+      pid: "phoenix-suns-radio"
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        console.log("There was an error looking up the overall page.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00002");
+        res.serverError();
+      } else {
+        // Destroy the blog
+        Blog.destroy({
+          blid: post.blid
+        }).exec(function(err) {
+          if (err) {
+            console.log("There was an error deleteing the blog.");
+            console.log("Error = " + err);
+            console.log("Error Code: 0018.");
+            res.send({
+              success: false,
+              error: true
+            });
+          } else {
+            // Remove the blid from the page array
+            var id = post.blid;
+            var index = currentPage.blogs.indexOf(id);
+            if (index > -1) {
+              currentPage.blogs.splice(index, 1);
+            }
+            currentPage.save(function(err) {
+              if (err) {
+                console.log("There was an error updating the current page after destorying the blog.");
+                console.log("Error = " + err);
+                console.log("Error Code: 0019");
+                res.send({
+                  success: false,
+                  error: true
+                });
+              } else {
+                res.send({
+                  success: true,
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  },
+
 };

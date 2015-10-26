@@ -144,6 +144,10 @@ module.exports = {
                     console.log("There was an error updating the current page after destorying the broadcast.");
                     console.log("Error = " + err);
                     console.log("Error Code: 00007");
+                    res.send({
+                      success: false,
+                      error: true
+                    });
                   } else {
                     res.send({
                       success: true,
