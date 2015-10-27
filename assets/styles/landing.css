@@ -51,6 +51,20 @@ body {
   padding-bottom: 75px;
 }
 
+.small-header {
+  background-color: #391366;
+  color: #fff;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.small-header h1 {
+  font-weight: 300;
+  font-size: 35px;
+  color: #fff;
+}
+
 .header h1 {
   font-weight: 300;
   font-size: 46px;

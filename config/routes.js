@@ -42,6 +42,11 @@ module.exports.routes = {
     action: 'about'
   },
 
+  'GET /social': {
+    controller: 'landing',
+    action: 'social'
+  },
+
   'GET /admin': {
     controller: 'user',
     action: 'admin'
@@ -88,6 +93,8 @@ module.exports.routes = {
     controller: 'landing',
     action: 'testAdmin'
   },
+
+
 
 
 
