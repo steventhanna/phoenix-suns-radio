@@ -69,7 +69,7 @@ module.exports.routes = {
 
   'GET /dashboard': {
     controller: 'user',
-    action: 'dashboard'
+    action: 'overview'
   },
 
   'POST /broadcast/new': {
