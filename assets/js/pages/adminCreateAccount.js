@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("#createAccountButton").click(function() {
     var email = $("#email").val();
     var password = $("#password").val();
-    var firstName $("#firstName").val();
+    var firstName = $("#firstName").val();
     var lastName = $("#lastName").val();
     var passwordConfirmation = $("#confirm-password").val();
     var accessCode = $("#access-code").val();
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     if (error == false) {
       var postObj = {
-        email: email,
+        username: email,
         firstName: firstName,
         lastName: lastName,
         password: password,

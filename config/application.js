@@ -11,7 +11,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 function findByUsername(username, fn) {
   User.findOne({
-    email: username
+    username: username
   }).exec(function(err, user) {
     if (err || user == undefined) {
       console.log("There was an error looking up the user with email " + username + ". ");
@@ -19,7 +19,7 @@ function findByUsername(username, fn) {
       console.log("Error Code 2256");
       return fn("USER NOT FOUND ON DATABASE! ERROR 2256.", null);
     } else {
-      console.log("LOOKUP: " + user);
+      console.log("LOOKUP: " + user.username);
       return fn(null, user);
     }
   });

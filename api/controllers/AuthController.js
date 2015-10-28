@@ -19,7 +19,7 @@ module.exports = {
     var post = req.body;
 
     var accountDetails = {
-      email: post.email,
+      username: post.username,
       password: post.password,
       firstName: post.firstName,
       lastName: post.lastName,
@@ -65,10 +65,10 @@ module.exports = {
 
         res.send({
           success: false,
+          user: undefined,
           error: true,
           errorMessage: "This user does not exist or there was some sort of error.",
           info: info,
-          status: 500
         });
         res.serverError();
       } else if ((!err) && user) {
@@ -83,6 +83,7 @@ module.exports = {
             return;
           } else {
             res.send({
+              user: user,
               success: true,
               status: 200
             });
@@ -90,6 +91,7 @@ module.exports = {
         });
       } else {
         res.send({
+          user: undefined,
           success: false,
           status: 500
         });

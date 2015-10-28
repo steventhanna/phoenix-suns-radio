@@ -24,7 +24,7 @@ module.exports = {
     },
 
     //The User's email address, also used as the username on the site
-    email: {
+    username: {
       required: true,
       type: 'email',
       unique: true

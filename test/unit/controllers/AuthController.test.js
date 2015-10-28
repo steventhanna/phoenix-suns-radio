@@ -6,7 +6,7 @@ describe('AuthController', function() {
       request(sails.hooks.http.app)
         .post('/create-account')
         .send({
-          email: 'example@email.com',
+          username: 'example@email.com',
           firstName: 'Bob',
           lastName: 'Smith',
           password: 'password',
@@ -18,16 +18,16 @@ describe('AuthController', function() {
     });
   });
   describe('#createAccount', function() {
-    it('should fail to create an account', function(done) {
+    it('should fail to create an account because of a bad accessCode', function(done) {
       request(sails.hooks.http.app)
         .post('/create-account')
         .send({
-          email: 'example@email.com',
-          firstName: 'Bob',
-          lastName: 'Smith',
+          username: 'john@cena.com',
+          firstName: 'John',
+          lastName: 'Cena',
           password: 'password',
           accessCode: 'zebra',
-          displayName: 'Bob Smith'
+          displayName: 'John Cena'
         })
         .expect(500, done)
     });
@@ -37,18 +37,18 @@ describe('AuthController', function() {
       request(sails.hooks.http.app)
         .post('/login')
         .send({
-          email: 'example@email.com',
+          username: 'example@email.com',
           password: 'password'
         })
         .expect(200, done)
     });
   });
   describe('#login', function() {
-    it('should fail to login to an account', function(done) {
+    it('should fail to login to an account becuase of a bad password', function(done) {
       request(sails.hooks.http.app)
         .post('/login')
         .send({
-          email: 'example@email.com',
+          username: 'example@email.com',
           password: 'pass'
         })
         .expect(500, done)
