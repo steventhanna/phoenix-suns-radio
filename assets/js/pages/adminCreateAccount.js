@@ -53,6 +53,7 @@ $(document).ready(function() {
         success: function(data) {
           console.log(data);
           swal("Success", "The account has successfully been created!", "success");
+          window.location.href = "/dashboard";
         },
         error: function(data) {
           console.log(data);

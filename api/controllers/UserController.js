@@ -136,6 +136,23 @@ module.exports = {
     });
   },
 
+  testCreate: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError();
+      } else {
+        res.view('admin/dash', {
+          user: user,
+        });
+      }
+    });
+  },
+
   overview: function(req, res) {
     User.findOne({
       id: req.user.id

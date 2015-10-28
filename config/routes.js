@@ -57,6 +57,11 @@ module.exports.routes = {
     action: 'login'
   },
 
+  'GET /logout': {
+    controller: 'auth',
+    action: 'logout'
+  },
+
   'GET /create-account': {
     controller: 'user',
     action: 'createAccount'
@@ -69,7 +74,7 @@ module.exports.routes = {
 
   'GET /dashboard': {
     controller: 'user',
-    action: 'dashboard'
+    action: 'testCreate'
   },
 
   'POST /broadcast/new': {

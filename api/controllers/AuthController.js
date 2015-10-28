@@ -56,6 +56,7 @@ module.exports = {
   },
 
   login: function(req, res) {
+    console.log(req.body);
     passport.authenticate('local', function(err, user, info) {
       if (err || (!user)) {
         console.log("user = " + user);
