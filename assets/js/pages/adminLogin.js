@@ -4,7 +4,7 @@ $(document).ready(function() {
     var password = $("#password").val();
 
     var postObj = {
-      username: email,
+      email: email,
       password: password
     };
     console.log(postObj);

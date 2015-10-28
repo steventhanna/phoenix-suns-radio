@@ -19,7 +19,7 @@ module.exports = {
     var post = req.body;
 
     var accountDetails = {
-      username: post.email,
+      email: post.email,
       password: post.password,
       firstName: post.firstName,
       lastName: post.lastName,
@@ -41,8 +41,10 @@ module.exports = {
             } else {
               console.log(user);
               // TODO :: Redirect user to admin page
-              console.log("The account should have been created.");
-              res.redirect('/dashboard');
+              res.send({
+                success: true,
+                status: 200
+              });
             }
           });
         }

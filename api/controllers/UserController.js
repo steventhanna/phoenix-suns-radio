@@ -85,8 +85,52 @@ module.exports = {
         console.log("Error Code: 00001");
         res.serverError();
       } else {
-        res.view('admin/dash', {
-          user: user
+        // User retrieved
+        // Get Page
+        Page.findOne({
+          pid: 'phoenix-suns-radio'
+        }).exec(function(err, currentPage) {
+          if (err || currentPage == undefined) {
+            console.log("There was an error looking up the overall page.");
+            console.log("Error = " + err);
+            console.log("Error Code: 00002");
+          } else {
+            // Look up all the broadcasts
+            // TODO :: Test this to see if it even works.
+            var broadcastArr = currentPage.broadcasts;
+            var broadCastObj;
+            if (broadCastArr.length > broadCastObj.length) {
+              for (var i = 0; i < broadCastArr.length; i++) {
+                Broadcast.findOne({
+                  bid: boradCastArr[i]
+                }).exec(function(err, currentBroadcast) {
+                  if (err || currentBroadcast == undefined) {
+                    console.log("There was an error looking up the current broadcast");
+                    console.log("Error = " + err);
+                    console.log("Error CodeL 00003");
+                    res.serverError();
+                  } else {
+                    broadCastObj.push(currentBroadcast);
+                  }
+                })
+              }
+            } else if (broadCastArr.length == broadCastObj.length) {
+              // Send to the page
+              res.view('dashboard/dash', {
+                user: user,
+                broadcasts: broadCastObj
+              });
+            }
+            // TODO :: Check if the else if needs an else.
+            // TODO :: Test if this is even the correct way of doing this.
+            if (broadCastArr.length == broadCastObj.length) {
+              res.view('dashboard/dash', {
+                user: user,
+                // Broadcast obj should be empty
+                broadCastObj: undefined
+              });
+            }
+          }
         });
       }
     });
@@ -110,30 +154,10 @@ module.exports = {
             console.log("Error = " + err);
             console.log("Error Code: 00002");
             res.serverError();
-            var pageData = {
-              pid: "phoenix-suns-radio",
-              broadcasts: [],
-              blogs: [],
-              about: ""
-            };
-
-            Page.create(pageData).exec(function(err, newPage) {
-              if (err || newPage == undefined) {
-                console.log("There was an error creating the overall page.");
-                console.log("Error = " + err);
-                console.log("Error Code: 0010");
-              } else {
-                // res.send({
-                //   success: true,
-                // });
-                currentPage = newPage;
-              }
-            });
           } else {
             // Get total amount of broadcasts
             var totalBroadcasts = currentPage.broadcasts.length;
             res.view('admin/dash', {
-              user: user,
               totalBroadcasts: totalBroadcasts
             });
           }

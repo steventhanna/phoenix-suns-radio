@@ -17,17 +17,19 @@ module.exports = {
 
     broadcasts: {
       type: 'array',
-      defaultsTo: '[]',
+      defualtsTo: '[]',
+      required: true
     },
 
     blogs: {
       type: 'array',
       defaultsTo: '[]',
+      required: true
     },
 
     // The content for the about section
     about: {
       type: 'string',
-    },
+    }
   }
 };
