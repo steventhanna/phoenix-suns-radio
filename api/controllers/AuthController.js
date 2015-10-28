@@ -94,7 +94,6 @@ module.exports = {
         res.send({
           user: undefined,
           success: false,
-          status: 500
         });
         res.serverError();
       }

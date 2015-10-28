@@ -87,9 +87,14 @@ module.exports = {
       } else {
         // User retrieved
         // Get Page
-        Page.findOne({
-          pid: 'phoenix-suns-radio'
-        }).exec(function(err, currentPage) {
+        var pid = 'phoenix-suns-radio';
+        var pageData = {
+          pid: "phoenix-suns-radio",
+          broadcasts: [],
+          blogs: [],
+          about: ""
+        };
+        Page.findOrCreate(pid, pageData).exec(function(err, currentPage) {
           if (err || currentPage == undefined) {
             console.log("There was an error looking up the overall page.");
             console.log("Error = " + err);
@@ -97,39 +102,46 @@ module.exports = {
           } else {
             // Look up all the broadcasts
             // TODO :: Test this to see if it even works.
-            var broadcastArr = currentPage.broadcasts;
-            var broadCastObj;
+            // if (currentPage.broadcasts.length == 0) {
+            //   res.view('admin/dash', {
+            //     user: user,
+            //     broadcasts: undefined
+            //   });
+            // }
+            var broadCastArr = currentPage.broadcasts;
+            // console.log(currentPage.broadcasts.length);
+            var broadCastObj = [];
             if (broadCastArr.length > broadCastObj.length) {
               for (var i = 0; i < broadCastArr.length; i++) {
                 Broadcast.findOne({
-                  bid: boradCastArr[i]
+                  bid: broadCastArr[i]
                 }).exec(function(err, currentBroadcast) {
                   if (err || currentBroadcast == undefined) {
                     console.log("There was an error looking up the current broadcast");
                     console.log("Error = " + err);
-                    console.log("Error CodeL 00003");
+                    console.log("Error Code: 00003");
                     res.serverError();
                   } else {
                     broadCastObj.push(currentBroadcast);
                   }
-                })
+                });
               }
             } else if (broadCastArr.length == broadCastObj.length) {
               // Send to the page
-              res.view('dashboard/dash', {
+              res.view('admin/dash', {
                 user: user,
                 broadcasts: broadCastObj
               });
             }
-            // TODO :: Check if the else if needs an else.
-            // TODO :: Test if this is even the correct way of doing this.
-            if (broadCastArr.length == broadCastObj.length) {
-              res.view('dashboard/dash', {
-                user: user,
-                // Broadcast obj should be empty
-                broadCastObj: undefined
-              });
-            }
+            // // TODO :: Check if the else if needs an else.
+            // // TODO :: Test if this is even the correct way of doing this.
+            // if (broadCastArr.length == broadCastObj.length) {
+            //   res.view('admin/dash', {
+            //     user: user,
+            //     // Broadcast obj should be empty
+            //     broadCastObj: undefined
+            //   });
+            // }
           }
         });
       }
@@ -146,6 +158,7 @@ module.exports = {
         console.log("Error Code: 00001");
         res.serverError();
       } else {
+
         res.view('admin/dash', {
           user: user,
         });
