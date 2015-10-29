@@ -63,15 +63,15 @@ module.exports = {
         console.log("err = " + err);
         console.log("info = ");
         console.log(info);
-
+        res.serverError();
         res.send({
           success: false,
           user: undefined,
           error: true,
           errorMessage: "This user does not exist or there was some sort of error.",
           info: info,
+          status: 500,
         });
-        res.serverError();
       } else if ((!err) && user) {
         req.logIn(user, function(err) {
           if (err) {
