@@ -1,13 +1,13 @@
 <ul class="nav nav-sidebar">
-  <li class="active">
-    <a href="#">Overview
+  <li <% if (currentSidebar == "overview") { %> class="active"<% } %>>
+    <a href="/dashboard">Overview
       <span class="sr-only">(current)</span>
     </a>
   </li>
-  <li>
-    <a href="#">Broadcasts</a>
+  <li <% if (currentSidebar == "broadcasts") { %> class="active"<% } %>>
+    <a href="/broadcasts">Broadcasts</a>
   </li>
-  <li>
-    <a href="#">About Page</a>
+  <li <% if (currentSidebar == "about-settings") { %> class="active"<% } %>>
+    <a href="/about-settings">About Page</a>
   </li>
 </ul>

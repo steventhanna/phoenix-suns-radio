@@ -5,7 +5,12 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+
+var marked = require('marked');
+
 module.exports = {
+
+
 
   home: function(req, res) {
     // TODO :: lookup blog
@@ -32,9 +37,12 @@ module.exports = {
           about: undefined
         });
       } else {
+        var text = marked(currentPage.about);
+        console.log(text);
         res.view('landing/about', {
           currentPage: 'about',
           about: currentPage.about,
+          marked: text,
         });
       }
     });

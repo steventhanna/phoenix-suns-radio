@@ -8,8 +8,6 @@
 module.exports = {
 
   new: function(req, res) {
-    var post = req.body;
-
     var pageData = {
       pid: "phoenix-suns-radio",
       broadcasts: [],
@@ -22,10 +20,9 @@ module.exports = {
         console.log("There was an error creating the overall page.");
         console.log("Error = " + err);
         console.log("Error Code: 0010");
+        res.serverError();
       } else {
-        res.send({
-          success: true,
-        });
+        console.log(newPage);
       }
     });
   },
@@ -58,6 +55,19 @@ module.exports = {
             }
           });
         }
+      }
+    });
+  },
+
+  pageCreated: function(req, res) {
+    Page.findOne({
+      pid: 'phoenix-suns-radio'
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        // Create the page
+        res.redirect('/page/create');
+      } else {
+        res.redirect('/dashboard');
       }
     });
   },

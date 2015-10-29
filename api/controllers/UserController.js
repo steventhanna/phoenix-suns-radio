@@ -70,102 +70,6 @@ module.exports = {
     });
   },
 
-  /**
-   * Handle the dashboard request
-   */
-  // TODO :: Send broadcasts in the correct sorted order.
-  dashboard: function(req, res) {
-    var post = req.body;
-    User.findOne({
-      id: req.user.id
-    }).exec(function(err, user) {
-      if (err || user == undefined) {
-        console.log("There was an error looking up the logged in user.");
-        console.log("Error = " + err);
-        console.log("Error Code: 00001");
-        res.serverError();
-      } else {
-        // User retrieved
-        // Get Page
-        var pid = 'phoenix-suns-radio';
-        var pageData = {
-          pid: "phoenix-suns-radio",
-          broadcasts: [],
-          blogs: [],
-          about: ""
-        };
-        Page.findOrCreate(pid, pageData).exec(function(err, currentPage) {
-          if (err || currentPage == undefined) {
-            console.log("There was an error looking up the overall page.");
-            console.log("Error = " + err);
-            console.log("Error Code: 00002");
-          } else {
-            // Look up all the broadcasts
-            // TODO :: Test this to see if it even works.
-            // if (currentPage.broadcasts.length == 0) {
-            //   res.view('admin/dash', {
-            //     user: user,
-            //     broadcasts: undefined
-            //   });
-            // }
-            var broadCastArr = currentPage.broadcasts;
-            // console.log(currentPage.broadcasts.length);
-            var broadCastObj = [];
-            if (broadCastArr.length > broadCastObj.length) {
-              for (var i = 0; i < broadCastArr.length; i++) {
-                Broadcast.findOne({
-                  bid: broadCastArr[i]
-                }).exec(function(err, currentBroadcast) {
-                  if (err || currentBroadcast == undefined) {
-                    console.log("There was an error looking up the current broadcast");
-                    console.log("Error = " + err);
-                    console.log("Error Code: 00003");
-                    res.serverError();
-                  } else {
-                    broadCastObj.push(currentBroadcast);
-                  }
-                });
-              }
-            } else if (broadCastArr.length == broadCastObj.length) {
-              // Send to the page
-              res.view('admin/dash', {
-                user: user,
-                broadcasts: broadCastObj
-              });
-            }
-            // // TODO :: Check if the else if needs an else.
-            // // TODO :: Test if this is even the correct way of doing this.
-            // if (broadCastArr.length == broadCastObj.length) {
-            //   res.view('admin/dash', {
-            //     user: user,
-            //     // Broadcast obj should be empty
-            //     broadCastObj: undefined
-            //   });
-            // }
-          }
-        });
-      }
-    });
-  },
-
-  testCreate: function(req, res) {
-    User.findOne({
-      id: req.user.id
-    }).exec(function(err, user) {
-      if (err || user == undefined) {
-        console.log("There was an error looking up the logged in user.");
-        console.log("Error = " + err);
-        console.log("Error Code: 00001");
-        res.serverError();
-      } else {
-
-        res.view('admin/dash', {
-          user: user,
-        });
-      }
-    });
-  },
-
   overview: function(req, res) {
     User.findOne({
       id: req.user.id
@@ -180,15 +84,15 @@ module.exports = {
           pid: 'phoenix-suns-radio'
         }).exec(function(err, currentPage) {
           if (err || currentPage == undefined) {
-            console.log("There was an error looking up the overall page.");
+            console.log("There was an error looking up the page.");
             console.log("Error = " + err);
-            console.log("Error Code: 00002");
             res.serverError();
           } else {
-            // Get total amount of broadcasts
-            var totalBroadcasts = currentPage.broadcasts.length;
             res.view('admin/dash', {
-              totalBroadcasts: totalBroadcasts
+              user: user,
+              page: currentPage,
+              currentPage: 'dashboard',
+              currentSidebar: 'overview'
             });
           }
         });
@@ -236,22 +140,57 @@ module.exports = {
                 res.view('admin/broadcasts', {
                   user: user,
                   broadcasts: broadObj,
-                  currentPage: 'broadcasts'
+                  currentPage: 'dashboard',
+                  currentSidebar: 'broadcasts'
                 });
               }
             } else if (broadcastList.length == broadObj.length) {
               res.view('admin/broadcasts', {
                 user: user,
                 broadcasts: broadObj,
-                currentPage: 'broadcasts'
+                currentPage: 'dashboard',
+                currentSidebar: 'broadcasts'
               });
             } else {
               res.view('admin/broadcasts', {
                 user: user,
                 broadcasts: undefined,
-                currentPage: 'broadcasts'
+                currentPage: 'dashboard',
+                currentSidebar: 'broadcasts'
               });
             }
+          }
+        });
+      }
+    });
+  },
+
+  aboutSettings: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError();
+      } else {
+        Page.findOne({
+          pid: 'phoenix-suns-radio'
+        }).exec(function(err, currentPage) {
+          if (err || currentPage == undefined) {
+            console.log("There was an error looking up the overall page.");
+            console.log("Error = " + err);
+            console.log("Error Code: 00002");
+            res.serverError();
+          } else {
+            res.view('admin/about', {
+              user: user,
+              page: currentPage,
+              about: currentPage.about,
+              currentPage: 'dashboard',
+              currentSidebar: 'about-settings'
+            });
           }
         });
       }

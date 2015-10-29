@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/styles/dashboard.css">
+<script src="/js/pages/about.js"></script>
+
+<% include parts/navbar.ejs %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <% include parts/sidebar.ejs %>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <!-- Main content -->
+      <h1 class="page-header">About</h1>
+      <textarea id="aboutText" class="form-control" rows="10"><%= about %></textarea>
+      <br />
+      <div class="pull-right"><a id="updateAboutButton" class="btn btn-success btn-md">Update About</a></div>
+    </div>
+  </div>
+</div>

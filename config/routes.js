@@ -74,7 +74,7 @@ module.exports.routes = {
 
   'GET /dashboard': {
     controller: 'user',
-    action: 'dashboard'
+    action: 'overview'
   },
 
   'POST /broadcast/new': {
@@ -87,11 +87,25 @@ module.exports.routes = {
     action: 'delete'
   },
 
+  'GET /broadcasts': {
+    controller: 'user',
+    action: 'broadcast'
+  },
+
   'POST /page/new': {
     controller: 'page',
     action: 'new'
   },
 
+  'POST /page/about': {
+    controller: 'page',
+    action: 'editAbout'
+  },
+
+  'GET /about-settings': {
+    controller: 'user',
+    action: 'aboutSettings'
+  },
 
   // TEST BACKEND DESIGN
   '/admin-test': {
