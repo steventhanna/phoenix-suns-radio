@@ -38,7 +38,6 @@ module.exports = {
         });
       } else {
         var text = marked(currentPage.about);
-        console.log(text);
         res.view('landing/about', {
           currentPage: 'about',
           about: currentPage.about,

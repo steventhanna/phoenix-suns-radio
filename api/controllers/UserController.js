@@ -101,6 +101,7 @@ module.exports = {
   },
 
   broadcast: function(req, res) {
+    var post = req.body;
     User.findOne({
       id: req.user.id
     }).exec(function(err, user) {
@@ -119,45 +120,48 @@ module.exports = {
             console.log("Error Code: 00002");
             res.serverError();
           } else {
-            var broadcastList = currentPage.broadcasts;
-            var broadObj = [];
-            if (broadcastList.length > broadObj.length) {
-              for (var i = 0; i < broadcastList.length; i++) {
-                Broadcast.findOne({
-                  bid: broadcastList[i]
-                }).exec(function(err, currentBroadcast) {
-                  if (err || currentBroadcast == undefined) {
-                    console.log("There was an error looking up the current broadcast");
-                    console.log("Error = " + err);
-                    console.log("Error CodeL 00003");
-                    res.serverError();
-                  } else {
-                    broadObj.push(currentBroadcast);
-                  }
-                });
-              }
-              if (broadcastList.length == broadObj.length) {
+            var list = currentPage.broadcasts;
+            console.log(list.length);
+            if (list.length == 0) {
+              if (list.length == broadcastList.length) {
                 res.view('admin/broadcasts', {
                   user: user,
-                  broadcasts: broadObj,
-                  currentPage: 'dashboard',
-                  currentSidebar: 'broadcasts'
+                  page: currentPage,
+                  broadcasts: undefined
                 });
               }
-            } else if (broadcastList.length == broadObj.length) {
-              res.view('admin/broadcasts', {
-                user: user,
-                broadcasts: broadObj,
-                currentPage: 'dashboard',
-                currentSidebar: 'broadcasts'
-              });
             } else {
-              res.view('admin/broadcasts', {
-                user: user,
-                broadcasts: undefined,
-                currentPage: 'dashboard',
-                currentSidebar: 'broadcasts'
-              });
+              var broadcastList = [];
+              if (list.length > broadcastList.length) {
+                for (var i = 0; i < list.length; i++) {
+                  console.log(list[i]);
+                  Broadcast.findOne({
+                    bid: list[i]
+                  }).exec(function(err, currentBroadcast) {
+                    if (err || currentBroadcast == undefined) {
+                      console.log("There was an error looking up the broadcast.");
+                      console.log("Error = " + err);
+                      console.log("Error Code: 0003");
+                      res.serverError();
+                    } else {
+                      broadcastList.push(currentBroadcast);
+                      if (list.length == broadcastList.length) {
+                        res.view('admin/broadcasts', {
+                          user: user,
+                          page: currentPage,
+                          broadcasts: broadcastList
+                        });
+                      }
+                    }
+                  });
+                }
+              } else {
+                res.view('admin/broadcasts', {
+                  user: user,
+                  page: currentPage,
+                  broadcasts: broadcastList
+                });
+              }
             }
           }
         });
