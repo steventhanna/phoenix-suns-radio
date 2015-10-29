@@ -4,7 +4,7 @@ $(document).ready(function() {
     var password = $("#password").val();
 
     var postObj = {
-      email: email,
+      username: email,
       password: password
     };
     console.log(postObj);
@@ -16,7 +16,7 @@ $(document).ready(function() {
       success: function(data) {
         console.log(data);
         if (data.success == true) {
-          swal("Success", "You have been logged in.", "success");
+          window.location.href = "/dashboard";
         } else {
           swal("Uh-Oh!", "The account could not be logged in.", "error");
         }
