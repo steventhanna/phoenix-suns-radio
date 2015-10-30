@@ -14,8 +14,29 @@ module.exports = {
 
   home: function(req, res) {
     // TODO :: lookup blog
-    res.view('landing/home', {
-      currentPage: 'home'
+
+    Page.findOne({
+      pid: 'phoenix-suns-radio'
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        console.log("There was an error looking up the overall page.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00002");
+        res.serverError();
+      } else {
+        // Do the async shit
+        var broadcasts = [];
+        Broadcast.find({}).exec(function findCB(err, found) {
+          while (found.length) {
+            broadcasts.push(found.pop());
+          }
+          res.view('landing/home', {
+            page: currentPage,
+            broadcasts: broadcasts,
+            currentPage: 'home',
+          });
+        });
+      }
     });
   },
 

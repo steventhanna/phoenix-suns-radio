@@ -7,7 +7,7 @@
       <div class="col-lg-12">
         <h1>Enter Introduction Text Here</h1>
         <h3>Listen to our latest broadcast below.</h3>
-        <iframe allowfullscreen frameborder="0" height="300" src="http://player.cinchcast.com/?platformId=1&assetType=single&assetId=5635975" width="500"></iframe>
+        <%- broadcasts[0].embedCode %>
       </div>
     </div>
   </div>
@@ -20,27 +20,17 @@
   </div>
 </div>
 <div class="container">
-  <div class="row cast-panel">
-    <div class="col-lg-6">
-      <h1>Dennis Deninger Special</h1>
-      <h3>5 Months Ago</h3>
-      <p>Join Suns Talk Radio as we welcome on another guest, Dennis Deninger. Deninger, a former producer on ESPN's Sportscenter will be joining the buzz to talk about the current NBA playoffs, and how the new TV deal will influence the Suns in just few short years. Please join in on the discussion by tweeting us your questions @SunsTalkRadio. We will eagerly be awaiting your questions!</p>
-    </div>
-    <div class="col-lg-6 align-right">
-        <iframe allowfullscreen frameborder="0" height="370" src="http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7560541" width="400"></iframe>
-        <div style="font-size: 10px;text-align: center;width:400px;">
+  <% for (var i = 0; i < broadcasts.length; i++) { %>
+    <div class="row cast-panel">
+      <div class="col-lg-6">
+        <h1><%= broadcasts[i].title %></h1>
+        <h3><%= broadcasts[i].date %></h3>
+        <p><%= broadcasts[i].summary %></p>
+      </div>
+      <div class="col-lg-6 align-right">
+        <%- broadcasts[i].embedCode %>
       </div>
     </div>
-  </div>
-  <hr>
-  <div class="row cast-panel">
-    <div class="col-lg-6">
-      <h1>The End of a Season, the Start of a New Future</h1>
-      <h3>5 Months Ago</h3>
-      <p>In today’s episode of Suns Talk Radio, we will be discussing the end of the Suns season, and the tragic departure from the playoffs. Host Zach Parnes will also be looking to the season ahead, and what the Suns need to do in order to emerge back amongst the finest teams in the Western Conference. Call in and share you opinions on the season, 646-716-4921 is the number to dial if you’d like to talk to us and all of those other people in listener land. Feel free to tweet us @SunsTalkRadio, and ask us your questions. We will be taking callers and tweets tonight!</p>
-    </div>
-    <div class="col-lg-6 align-right">
-      <iframe allowfullscreen frameborder="0" height="370" src="http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7521391" width="400"></iframe>
-    </div>
-  </div>
+    <hr>
+  <% } %>
 </div>
