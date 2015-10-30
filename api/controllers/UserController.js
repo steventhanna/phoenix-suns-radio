@@ -120,49 +120,20 @@ module.exports = {
             console.log("Error Code: 00002");
             res.serverError();
           } else {
-            var list = currentPage.broadcasts;
-            console.log(list.length);
-            if (list.length == 0) {
-              if (list.length == broadcastList.length) {
-                res.view('admin/broadcasts', {
-                  user: user,
-                  page: currentPage,
-                  broadcasts: undefined
-                });
+            // Do the async shit
+            var broadcasts = [];
+            Broadcast.find({}).exec(function findCB(err, found) {
+              while (found.length) {
+                broadcasts.push(found.pop());
               }
-            } else {
-              var broadcastList = [];
-              if (list.length > broadcastList.length) {
-                for (var i = 0; i < list.length; i++) {
-                  console.log(list[i]);
-                  Broadcast.findOne({
-                    bid: list[i]
-                  }).exec(function(err, currentBroadcast) {
-                    if (err || currentBroadcast == undefined) {
-                      console.log("There was an error looking up the broadcast.");
-                      console.log("Error = " + err);
-                      console.log("Error Code: 0003");
-                      res.serverError();
-                    } else {
-                      broadcastList.push(currentBroadcast);
-                      if (list.length == broadcastList.length) {
-                        res.view('admin/broadcasts', {
-                          user: user,
-                          page: currentPage,
-                          broadcasts: broadcastList
-                        });
-                      }
-                    }
-                  });
-                }
-              } else {
-                res.view('admin/broadcasts', {
-                  user: user,
-                  page: currentPage,
-                  broadcasts: broadcastList
-                });
-              }
-            }
+              res.view('admin/broadcasts', {
+                user: user,
+                page: currentPage,
+                broadcasts: broadcasts,
+                currentPage: 'dashboard',
+                currentSidebar: 'broadcasts'
+              });
+            });
           }
         });
       }

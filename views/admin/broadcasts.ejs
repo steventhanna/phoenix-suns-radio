@@ -14,9 +14,12 @@
 </button>
 </div></h1>
       <% if (broadcasts.length > 0) { %>
-        <%= broadcasts.length %>
         <% for (var i = 0; i < broadcasts.length; i++) { %>
-          <%= broadcasts[i].title %>
+          <h1><%= broadcasts[i].title %></h1>
+          <small><%= broadcasts[i].date %></small>
+          <p><%= broadcasts[i].summary %></p>
+          <p><%= broadcasts[i].embedCode %></p>
+          <br />
         <% } %>
       <% } else { %>
         <center><h1 style="margin-top: 50px; font-weight: 300;">No Broadcasts</h1></center>
