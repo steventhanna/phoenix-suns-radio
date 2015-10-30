@@ -87,6 +87,11 @@ module.exports.routes = {
     action: 'delete'
   },
 
+  'POST /broadcast/edit': {
+    controller: 'broadcast',
+    action: 'edit'
+  },
+
   'GET /broadcasts': {
     controller: 'user',
     action: 'broadcast'
@@ -107,10 +112,10 @@ module.exports.routes = {
     action: 'aboutSettings'
   },
 
-  // TEST BACKEND DESIGN
-  '/admin-test': {
-    controller: 'landing',
-    action: 'testAdmin'
+  // View a specific broadcast
+  'GET /broadcast/:broadcastID': {
+    controller: 'broadcast',
+    action: 'view'
   },
 
 

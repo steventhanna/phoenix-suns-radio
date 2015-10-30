@@ -136,3 +136,26 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+.card {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.card-embedCode {
+  font-size: 16px;
+  font-family: 'Source Code Pro';
+  background-color: #dbd9d9;
+  color: #ed1111;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}

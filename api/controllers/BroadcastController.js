@@ -167,7 +167,6 @@ module.exports = {
 
   edit: function(req, res) {
     var post = req.body;
-
     User.findOne({
       id: req.user.id
     }).exec(function(err, user) {
@@ -176,6 +175,7 @@ module.exports = {
         console.log("Error = " + err);
         console.log("Error Code: 00001");
       } else {
+        console.log(post.bid);
         Broadcast.findOne({
           bid: post.bid
         }).exec(function(err, currentBroadcast) {
@@ -225,6 +225,40 @@ module.exports = {
     });
   },
 
-
-
+  view: function(req, res) {
+    var post = req.body;
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError();
+      } else {
+        // Get the BID out of the url
+        var url = req.url;
+        var urlArray = url.split("/");
+        var bid = urlArray[2];
+        console.log(bid);
+        Broadcast.findOne({
+          bid: bid
+        }).exec(function(err, currentBroadcast) {
+          if (err || currentBroadcast == undefined) {
+            console.log("There was an error looking up the specific broadcast.");
+            console.log("Error = " + err);
+            console.log("Error Code 0015.");
+            res.serverError();
+          } else {
+            res.view('admin/viewBroadcast', {
+              user: user,
+              broadcast: currentBroadcast,
+              currentPage: 'dashboard',
+              currentSidebar: '',
+            });
+          }
+        });
+      }
+    });
+  },
 };

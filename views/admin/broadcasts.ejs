@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="/styles/dashboard.css">
+<link href="/styles/dashboard.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
 <% include parts/navbar.ejs %>
 
@@ -9,63 +10,72 @@
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <!-- Main content -->
-      <h1 class="page-header">Broadcasts <div class="pull-right"><button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addBroadcastModal">
-  Add Broadcast
-</button>
-</div></h1>
+      <h1 class="page-header">Broadcasts
+        <div class="pull-right">
+          <button class="btn btn-success btn-md" data-target="#addBroadcastModal" data-toggle="modal" type="button">
+            Add Broadcast
+          </button>
+        </div>
+      </h1>
       <% if (broadcasts.length > 0) { %>
         <% for (var i = 0; i < broadcasts.length; i++) { %>
-          <h2><%= broadcasts[i].title %></h2>
-          <small><%= broadcasts[i].date %></small>
-          <p><%= broadcasts[i].summary %></p>
-          <code><%= broadcasts[i].embedCode %></code>
-          <br />
+          <div class="card">
+            <h1 class="card-title"><%= broadcasts[i].title %><a class="pull-right btn btn-primary" href="/broadcast/<%=broadcasts[i].bid %>">Edit</a></h1>
+            <h4 class="card-date"><%= broadcasts[i].date %></h4>
+            <p class="card-summary"><%= broadcasts[i].summary %></p>
+            <p class="card-embedCode"><%= broadcasts[i].embedCode %></p>
+          </div>
         <% } %>
       <% } else { %>
-        <center><h1 style="margin-top: 50px; font-weight: 300;">No Broadcasts</h1></center>
-        <br />
-        <center><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addBroadcastModal">
-    Add Broadcast
-  </button></center>
-      <% } %>
+      <center>
+        <h1 style="margin-top: 50px; font-weight: 300;">No Broadcasts</h1>
+      </center>
+      <br/>
+      <center>
+        <button class="btn btn-success btn-lg" data-target="#addBroadcastModal" data-toggle="modal" type="button">
+          Add Broadcast
+        </button>
+      </center>
+    <% } %>
+  </div>
+</div>
+</div>
+
+<div aria-labelledby="broadcastModalLabel" class="modal fade" id="addBroadcastModal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title" id="broadcastModalLabel">Add Broadcast</h4>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input class="form-control" id="title" placeholder="Title" type="text">
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input class="form-control" id="date" type="date">
+        </div>
+        <div class="form-group">
+          <label for="summary">Summary</label>
+          <textarea class="form-control" id="summary" placeholder="Summary" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="embedCode">Embed Code</label>
+          <textarea class="form-control" id="embedCode" placeholder="Embed Code" rows="3"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+      <button class="btn btn-success" id="addBroadcastButton" type="button">Add Broadcast</button>
     </div>
   </div>
 </div>
-
-
-<div class="modal fade" id="addBroadcastModal" tabindex="-1" role="dialog" aria-labelledby="broadcastModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="broadcastModalLabel">Add Broadcast</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Title">
-          </div>
-          <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" class="form-control" id="date">
-          </div>
-          <div class="form-group">
-            <label for="summary">Summary</label>
-            <textarea id="summary" class="form-control" rows="3" placeholder="Summary"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="embedCode">Embed Code</label>
-            <textarea id="embedCode" class="form-control" rows="3" placeholder="Embed Code"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="addBroadcastButton" type="button" class="btn btn-success">Add Broadcast</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="/js/pages/editBroadcast.js"></script>

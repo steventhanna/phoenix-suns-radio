@@ -17,7 +17,11 @@
 <div class="container">
   <div class="row">
     <div class="row-title">
+    <% if (broadcasts.length == 0) { %>
+      <center><h1>No Recent Broadcasts</h1></center>
+    <% } else { %>
       <h1>Our Past Broadcasts</h1>
+    <% } %>
     </div>
   </div>
 </div>

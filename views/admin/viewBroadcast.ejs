@@ -1,0 +1,42 @@
+<link href="/styles/dashboard.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<script src="/js/pages/viewBroadcast.js"></script>
+<% include parts/navbar.ejs %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <% include parts/sidebar.ejs %>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <!-- Main content -->
+      <h1 class="page-header">Edit Broadcast
+        <div class="pull-right">
+          <button class="btn btn-danger btn-md" id="deleteBroadcastButton" type="button">
+            Delete Broadcast
+          </button>
+        </div>
+      </h1>
+      <form>
+        <div class="hidden" id="bid"><%= broadcast.bid %></div>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input class="form-control" id="title" value="<%= broadcast.title %>" type="text">
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input class="form-control" id="date" value="<%= broadcast.date %>" type="date">
+        </div>
+        <div class="form-group">
+          <label for="summary">Summary</label>
+          <textarea class="form-control" id="summary" placeholder="Summary" rows="3"><%= broadcast.summary %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="embedCode">Embed Code</label>
+          <textarea class="form-control" id="embedCode" placeholder="Embed Code" rows="3"><%= broadcast.embedCode %></textarea>
+        </div>
+      </form>
+      <a id="editBroadcastButton" class="pull-right btn btn-success btn-md">Save Broadcast</a>
+    </div>
+  </div>
+</div>
