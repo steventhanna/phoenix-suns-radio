@@ -1,10 +1,11 @@
 $(document).ready(function() {
   $("#updateAboutButton").click(function() {
     var aboutText = document.getElementById("aboutText").value;
+    var title = $("#introText").val();
     var postObj = {
       about: aboutText,
+      introText: title,
     };
-
     $.ajax({
       type: 'POST',
       url: '/page/about',

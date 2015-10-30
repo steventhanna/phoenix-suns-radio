@@ -10,6 +10,7 @@ module.exports = {
   new: function(req, res) {
     var pageData = {
       pid: "phoenix-suns-radio",
+      introText: "Welcome to Suns Talk Radio",
       broadcasts: [],
       blogs: [],
       about: ""
@@ -39,6 +40,7 @@ module.exports = {
       } else {
         if (post.about != undefined && post.about !== " ") {
           currentPage.about = post.about;
+          currentPage.introText = post.introText;
           currentPage.save(function(err) {
             if (err) {
               console.log("There was an error saving the overall page with about information.");

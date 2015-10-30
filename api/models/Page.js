@@ -15,6 +15,10 @@ module.exports = {
       unique: true
     },
 
+    introText: {
+      type: 'string',
+    },
+
     broadcasts: {
       type: 'array',
       defaultsTo: '[]',
