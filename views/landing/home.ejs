@@ -8,7 +8,16 @@
         <h1><%= page.introText %></h1>
         <h3>Listen to our latest broadcast below.</h3>
         <% if (broadcasts.length > 0) { %>
-          <%- broadcasts[0].embedCode %>
+          <div class="listen" style="margin-left: 23%; width: 50%; text-align: center;">
+            <style>
+              div.center iframe {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+              }
+            </style>
+            <center><%- broadcasts[0].embedCode %></center>
+          </div>
         <% } %>
       </div>
     </div>
@@ -17,26 +26,28 @@
 <div class="container">
   <div class="row">
     <div class="row-title">
-    <% if (broadcasts.length == 0) { %>
-      <center><h1>No Recent Broadcasts</h1></center>
-    <% } else { %>
+      <% if (broadcasts.length == 0) { %>
+        <center>
+          <h1>No Recent Broadcasts</h1>
+        </center>
+      <% } else { %>
       <h1>Our Past Broadcasts</h1>
     <% } %>
-    </div>
   </div>
 </div>
+</div>
 <div class="container">
-  <% for (var i = 0; i < broadcasts.length; i++) { %>
-    <div class="row cast-panel">
-      <div class="col-lg-6">
-        <h1><%= broadcasts[i].title %></h1>
-        <h3><%= broadcasts[i].date %></h3>
-        <p><%= broadcasts[i].summary %></p>
-      </div>
-      <div class="col-lg-6 align-right">
-        <%- broadcasts[i].embedCode %>
-      </div>
+<% for (var i = 0; i < broadcasts.length; i++) { %>
+  <div class="row cast-panel">
+    <div class="col-lg-6">
+      <h1><%= broadcasts[i].title %></h1>
+      <h3><%= broadcasts[i].date %></h3>
+      <p><%= broadcasts[i].summary %></p>
     </div>
-    <hr>
-  <% } %>
+    <div class="col-lg-6 align-right">
+      <%- broadcasts[i].embedCode %>
+    </div>
+  </div>
+  <hr>
+<% } %>
 </div>
