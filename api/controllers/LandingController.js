@@ -34,7 +34,8 @@ module.exports = {
         console.log("Error = " + err);
         res.view('landing/about', {
           currentPage: 'about',
-          about: undefined
+          about: '',
+          marked: '',
         });
       } else {
         var text = marked(currentPage.about);

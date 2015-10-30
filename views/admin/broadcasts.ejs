@@ -15,10 +15,10 @@
 </div></h1>
       <% if (broadcasts.length > 0) { %>
         <% for (var i = 0; i < broadcasts.length; i++) { %>
-          <h1><%= broadcasts[i].title %></h1>
+          <h2><%= broadcasts[i].title %></h2>
           <small><%= broadcasts[i].date %></small>
           <p><%= broadcasts[i].summary %></p>
-          <p><%= broadcasts[i].embedCode %></p>
+          <code><%= broadcasts[i].embedCode %></code>
           <br />
         <% } %>
       <% } else { %>

@@ -89,7 +89,7 @@ module.exports.routes = {
 
   'GET /broadcasts': {
     controller: 'user',
-    action: 'broadcastAsync'
+    action: 'broadcast'
   },
 
   'POST /page/new': {

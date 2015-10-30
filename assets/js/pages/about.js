@@ -11,15 +11,20 @@ $(document).ready(function() {
       data: postObj,
       success: function(data) {
         console.log(data);
-        swal({
-          title: "Success!",
-          text: "About Text has been updated.",
-          type: "success",
-        }, {
-          function() {
+
+        if (data.success == true) {
+          swal({
+            title: "Success!",
+            text: "About Text has been updated.",
+            type: "success",
+            showCancelButton: false,
+            closeOnConfirm: false
+          }, function() {
             window.location.reload();
-          }
-        });
+          });
+        } else {
+          swal("Uh-Oh!", "The text could not be updated.", "error");
+        }
       },
       error: function(data) {
         console.log(data);
