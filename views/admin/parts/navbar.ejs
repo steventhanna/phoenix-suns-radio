@@ -13,8 +13,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="/dashboard">Dashboard</a></li>
-        <li><a href="#">Settings</a></li>
+        <li <% if (currentPage == "dashboard") { %>class="active"<% } %>><a href="/dashboard">Dashboard</a></li>
+        <li <% if (currentPage == "settings") { %>class="active"<% } %>><a href="/settings">Settings</a></li>
         <li><a href="/logout"><%= user.username %></a></li>
       </ul>
     </div>

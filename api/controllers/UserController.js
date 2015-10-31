@@ -27,7 +27,6 @@ module.exports = {
   // TODO :: Check hashing for changing password
   editAccount: function(req, res) {
     var post = req.body;
-
     User.findOne({
       id: req.user.id
     }).exec(function(err, user) {
@@ -39,7 +38,7 @@ module.exports = {
       } else {
         var changes = false;
         if (post.email != undefined && post.email !== " ") {
-          user.email = post.email;
+          user.username = post.email;
           changes = true;
         }
         if (post.password != undefined && post.password !== " ") {
@@ -167,6 +166,24 @@ module.exports = {
               currentSidebar: 'about-settings'
             });
           }
+        });
+      }
+    });
+  },
+
+  settings: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError();
+      } else {
+        res.view('admin/settings', {
+          user: user,
+          currentPage: 'settings'
         });
       }
     });

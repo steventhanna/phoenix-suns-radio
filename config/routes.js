@@ -118,6 +118,11 @@ module.exports.routes = {
     action: 'view'
   },
 
+  'GET /settings': {
+    controller: 'user',
+    action: 'settings'
+  },
+
 
 
 
