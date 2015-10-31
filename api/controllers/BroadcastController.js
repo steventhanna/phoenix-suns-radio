@@ -48,13 +48,16 @@ module.exports = {
             var title = post.title;
             var embedCode = post.embedCode;
             var date = post.date;
+            // Reformat date
+            var dateSplit = date.split("-");
+            var reCreate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
             var summary = post.summary;
             // Generate custom bid
             var bid = Math.floor(Math.random() * 1000000000000000000000);
             var broadcastData = {
               title: title,
               embedCode: embedCode,
-              date: date,
+              date: reCreate,
               summary: summary,
               bid: bid
             };
@@ -250,6 +253,10 @@ module.exports = {
             console.log("Error Code 0015.");
             res.serverError();
           } else {
+            // Fix the date issue
+            var dateArr = currentBroadcast.date.split("/");
+            var newDate = dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
+            currentBroadcast.date = newDate;
             res.view('admin/viewBroadcast', {
               user: user,
               broadcast: currentBroadcast,

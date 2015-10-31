@@ -19,7 +19,6 @@ function findByUsername(username, fn) {
       console.log("Error Code 2256");
       return fn("USER NOT FOUND ON DATABASE! ERROR 2256.", null);
     } else {
-      console.log("LOOKUP: " + user.username);
       return fn(null, user);
     }
   });
