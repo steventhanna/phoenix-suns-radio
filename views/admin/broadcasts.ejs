@@ -1,8 +1,10 @@
 <link href="/styles/dashboard.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
 
 <% include parts/navbar.ejs %>
 
@@ -23,7 +25,9 @@
       <% if (broadcasts.length > 0) { %>
         <% for (var i = 0; i < broadcasts.length; i++) { %>
           <div class="card">
-            <h1 class="card-title"><%= broadcasts[i].title %><a class="pull-right btn btn-primary" href="/broadcast/<%=broadcasts[i].bid %>">Edit</a></h1>
+            <h1 class="card-title"><%= broadcasts[i].title %>
+              <a class="pull-right btn btn-primary" href="/broadcast/<%=broadcasts[i].bid %>">Edit</a>
+            </h1>
             <h4 class="card-date"><%= broadcasts[i].date %></h4>
             <p class="card-summary"><%= broadcasts[i].summary %></p>
             <pre><code><%= broadcasts[i].embedCode %></code></pre>

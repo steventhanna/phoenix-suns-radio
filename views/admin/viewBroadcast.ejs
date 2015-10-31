@@ -1,6 +1,6 @@
-<link href="/styles/dashboard.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 <script src="/js/pages/viewBroadcast.js"></script>
+<link href="/styles/dashboard.css" rel="stylesheet">
 <% include parts/navbar.ejs %>
 
 <div class="container-fluid">
@@ -10,6 +10,14 @@
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <!-- Main content -->
+      <ol class="breadcrumb">
+        <li>
+          <a href="/broadcasts">Broadcasts</a>
+        </li>
+        <li>
+          <a href="#"><%= broadcast.title %></a>
+        </li>
+      </ol>
       <h1 class="page-header">Edit Broadcast
         <div class="pull-right">
           <button class="btn btn-danger btn-md" id="deleteBroadcastButton" type="button">
