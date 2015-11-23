@@ -83,7 +83,7 @@ body {
 }
 
 .row-title h1 {
-  color: #323232;
+  color: #e86225;
   font-weight: 300;
   font-size: 38px;
 }
@@ -103,14 +103,15 @@ hr {
 }
 
 .cast-panel h1 {
-  color: #000;
+  /*color: #e86225;*/
+  color: #391366;
   font-weight: 300;
   font-size: 30px;
   margin-top: 0px;
 }
 
 .cast-panel h3 {
-  color: #414141;
+  color: #e86225;
   font-weight: 300;
   font-size: 20px;
   margin-top: 0px;
