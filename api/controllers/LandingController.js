@@ -13,8 +13,6 @@ module.exports = {
 
 
   home: function(req, res) {
-    // TODO :: lookup blog
-
     Page.findOne({
       pid: 'phoenix-suns-radio'
     }).exec(function(err, currentPage) {
@@ -30,6 +28,7 @@ module.exports = {
           while (found.length) {
             broadcasts.push(found.pop());
           }
+          currentPage.introText = marked(currentPage.introText);
           res.view('landing/home', {
             page: currentPage,
             broadcasts: broadcasts,

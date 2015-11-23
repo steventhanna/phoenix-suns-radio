@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var marked = require('marked');
+
 module.exports = {
 
   new: function(req, res) {
