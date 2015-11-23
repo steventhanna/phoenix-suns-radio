@@ -140,12 +140,17 @@ module.exports.routes = {
 
   'POST /blog/remove': {
     controller: 'blog',
-    action: 'remove'
+    action: 'delete'
   },
 
   'GET /blog/:blogID': {
     controller: 'blog',
     action: 'displayBlog'
+  },
+
+  'GET /blog-settings': {
+    controller: 'blog',
+    action: 'settings'
   },
 
 

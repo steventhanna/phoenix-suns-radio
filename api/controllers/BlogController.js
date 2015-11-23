@@ -178,60 +178,62 @@ module.exports = {
     });
   },
 
-  blogposts: function(req, res) {
-    Page.findOne({
-      pid: "phoenix-suns-radio"
-    }).exec(function(err, currentPage) {
-      if (err || currentPage == undefined) {
-        console.log("There was an error looking up the overall page.");
+  settings: function(req, res) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
         console.log("Error = " + err);
-        console.log("Error Code: 00002");
+        console.log("Error Code: 00001");
         res.serverError();
       } else {
-        // Get all of the blog posts
-        var blogIds = currentPage.blogs;
-        var blogposts = [];
-        if (blogIds.length > blogposts.length) {
-          for (var i = 0; i < blogIds.length; i++) {
-            Blog.findOne({
-              blid: blogIds[i]
-            }).exec(function(err, currentBlog) {
-              if (err || currentBlog == undefined) {
-                console.log("There was an error looking up the blog post.");
-                console.log("Error = " + err);
-                console.log("Error Code: 0016");
-                res.serverError();
-              } else {
-                blogposts.push(currentBlog);
+        Page.findOne({
+          pid: "phoenix-suns-radio"
+        }).exec(function(err, currentPage) {
+          if (err || currentPage == undefined) {
+            console.log("There was an error looking up the page.");
+            console.log("Error = " + err);
+            res.serverError();
+          } else {
+            var blogs = [];
+            Blog.find({}).exec(function findBlog(err, found) {
+              while (found.length) {
+                blogs.push(found.pop());
               }
+              res.view('admin/allBlogs', {
+                user: user,
+                currentPage: 'allBlogs',
+                blogs: blogs,
+                page: currentPage
+              });
             });
           }
-          if (blogposts.length == blogIds.length) {
-            res.view('landing/blog', {
-              page: currentPage,
-              blogposts: blogposts,
-              currentPage: 'blog'
-            });
-          }
-        } else if (blogIds.length == blogposts.length) {
-          if (blogposts.length == blogIds.length) {
-            res.view('landing/blog', {
-              page: currentPage,
-              blogposts: blogposts,
-              currentPage: 'blog'
-            });
-          }
-        } else {
-          if (blogposts.length == blogIds.length) {
-            res.view('landing/blog', {
-              page: currentPage,
-              blogposts: undefined,
-              currentPage: 'blog'
-            });
-          }
-        }
+        });
       }
     });
   },
 
+  displayBlog: function(req, res) {
+    var post = req.body;
+    var url = req.url;
+
+    // Get the url
+    var array = url.split("/");
+    var blid = array[array.length];
+
+    Blog.findOne({
+      blid: blid
+    }).exec(function(err, currentBlog) {
+      if (err || currentBlog == undefined) {
+        console.log("There was an error looking up the current blog.");
+        console.log("Error = " + err);
+        res.serverError();
+      } else {
+        res.view('landing/currentBlog', {
+          currentBlog: currentBlog
+        });
+      }
+    });
+  },
 };

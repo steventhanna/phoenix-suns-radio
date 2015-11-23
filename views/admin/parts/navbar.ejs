@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li <% if (currentPage == "dashboard") { %>class="active"<% } %>><a href="/dashboard">Dashboard</a></li>
         <li <% if (currentPage == "settings") { %>class="active"<% } %>><a href="/settings">Settings</a></li>
+        <li <% if (currentPage == "blog") { %>class="active"<% } %>><a href="/blog-settings">Blog</a></li>
         <li><a href="/logout"><%= user.username %></a></li>
       </ul>
     </div>

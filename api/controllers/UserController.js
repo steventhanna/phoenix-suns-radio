@@ -188,4 +188,28 @@ module.exports = {
       }
     });
   },
+
+  blog: function(req, res) {
+    Page.findOne({
+      pid: "phoenix-suns-radio"
+    }).exec(function(err, currentPage) {
+      if (err || currentPage == undefined) {
+        console.log("There was an error looking up the page.");
+        console.log("Error = " + err);
+        res.serverError();
+      } else {
+        // Get the blog
+        var blogs = [];
+        Blog.find({}).exec(function findBlog(err, found) {
+          while (found.length) {
+            blogs.push(found.pop());
+          }
+          res.view('landing/blog', {
+            currentPage: 'blog',
+            blogs: blogs
+          });
+        });
+      }
+    });
+  },
 };
