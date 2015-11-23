@@ -123,18 +123,31 @@ module.exports.routes = {
     action: 'settings'
   },
 
+  'GET /blog': {
+    controller: 'user',
+    action: 'blog'
+  },
+
+  'POST /blog/new': {
+    controller: 'blog',
+    action: 'new'
+  },
+
+  'POST /blog/edit': {
+    controller: 'blog',
+    action: 'edit'
+  },
+
+  'POST /blog/remove': {
+    controller: 'blog',
+    action: 'remove'
+  },
+
+  'GET /blog/:blogID': {
+    controller: 'blog',
+    action: 'displayBlog'
+  },
 
 
-
-
-  /***************************************************************************
-   *                                                                          *
-   * Custom routes here...                                                    *
-   *                                                                          *
-   * If a request to a URL doesn't match any of the custom routes above, it   *
-   * is matched against Sails route blueprints. See `config/blueprints.js`    *
-   * for configuration options and examples.                                  *
-   *                                                                          *
-   ***************************************************************************/
 
 };
