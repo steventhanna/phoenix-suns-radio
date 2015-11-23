@@ -5,7 +5,6 @@
 
 <% include parts/navbar.ejs %>
 
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -23,31 +22,33 @@
       <form class="form-group">
         <h1><input class="form-control" id="title" placeholder="Title"></h1>
       </form>
-      <br />
+      <br/>
       <div class="editable" data-medium-focused="true"></div>
       <script>
         var editor = new MediumEditor('.editable', {
           toolbar: {
-                  /* These are the default options for the toolbar,
+            /* These are the default options for the toolbar,
                      if nothing is passed this is what is used */
-                  allowMultiParagraphSelection: true,
-                  buttons: ['bold', 'italic', 'underline', 'anchor', 'h1', 'h2', 'h3', 'quote'],
-                  diffLeft: 0,
-                  diffTop: -10,
-                  firstButtonClass: 'medium-editor-button-first',
-                  lastButtonClass: 'medium-editor-button-last',
-                  standardizeSelectionStart: false,
-                  static: false,
+            allowMultiParagraphSelection: true,
+            buttons: [
+              'bold', 'italic', 'underline', 'anchor', 'h1', 'h2', 'h3', 'quote'
+            ],
+            diffLeft: 0,
+            diffTop: -10,
+            firstButtonClass: 'medium-editor-button-first',
+            lastButtonClass: 'medium-editor-button-last',
+            standardizeSelectionStart: false,
+            static: false,
 
-                  /* options which only apply when static is true */
-                  align: 'center',
-                  sticky: false,
-                  updateOnEmptySelection: false
-              },
-              spellcheck: true,
-              placeholder: {
-                text: "Write your post here"
-              },
+            /* options which only apply when static is true */
+            align: 'center',
+            sticky: false,
+            updateOnEmptySelection: false
+          },
+          spellcheck: true,
+          placeholder: {
+            text: "Write your post here"
+          }
         });
       </script>
 
