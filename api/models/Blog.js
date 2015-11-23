@@ -25,6 +25,10 @@ module.exports = {
       type: 'string'
     },
 
+    preview: {
+      type: 'string'
+    },
+
     author: {
       type: 'string'
     },

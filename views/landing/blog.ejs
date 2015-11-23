@@ -1,0 +1,30 @@
+<% include parts/depend %>
+<% include parts/navbar %>
+
+<script src="/js/dependencies/marked.js"></script>
+
+<div class="small-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1><strong>Suns Talk Radio</strong> Blog</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <% if (blogs.length == 0) { %>
+    <br />
+    <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
+  <%} else { %>
+    <% for(var i = 0; i < blogs.length; i++) { %>
+      <h1><%= blogs[i].title %>></h1>
+      <h3><%= blogs[i].author %></h3>
+      <h5><%= blogs[i].date %></h5>
+      <p><%- blogs[i].preview %></p>
+      <br />
+      <a href="/blog/<%= blogs[i].id %>">Read More</a>
+    <% } %>
+  <% } %>
+</div>

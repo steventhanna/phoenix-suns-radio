@@ -1,0 +1,30 @@
+<link href="/styles/dashboard.css" rel="stylesheet">
+
+<% include parts/navbar.ejs %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <% include parts/blogSidebar.ejs %>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <!-- Main content -->
+      <h1 class="page-header">Blog
+        <div class="pull-right">
+          <a href="/add-blog" class="btn btn-success btn-md">Add Blog Post</a>
+        </div>
+      </h1>
+
+
+      <br/>
+      <% if (blogs.length == 0) { %>
+      <center>
+        <a href="/add-blog" class="btn btn-success btn-lg">Add Blog Post</a>
+      </center>
+      <% } else { %>
+        <% for (var i = 0; i < blogs.length; i++) { %>
+        <% } %>
+      <% } %>
+  </div>
+</div>
+</div>

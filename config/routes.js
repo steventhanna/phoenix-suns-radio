@@ -153,6 +153,11 @@ module.exports.routes = {
     action: 'settings'
   },
 
+  'GET /add-blog': {
+    controller: 'blog',
+    action: 'newBlogPage'
+  },
+
 
 
 };
