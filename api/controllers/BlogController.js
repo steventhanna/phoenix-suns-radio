@@ -8,8 +8,8 @@
 module.exports = {
 
   new: function(req, res) {
+    console.log("TRIGGER");
     var post = req.body;
-
     User.findOne({
       id: req.user.id
     }).exec(function(err, user) {
@@ -36,12 +36,13 @@ module.exports = {
               display = post.contents;
             }
             var blogObj = {
-              title: post.tile,
+              title: post.title,
               author: user.displayName,
               contents: post.contents,
               preview: display,
               blid: Math.floor(Math.random() * 1000000000000000000000),
             };
+            console.log(blogObj);
 
             Blog.create(blogObj).exec(function(err, newBlogPost) {
               if (err || newBlogPost == undefined) {
@@ -59,6 +60,7 @@ module.exports = {
                   currentPage.blogs = [];
                 }
                 currentPage.blogs.push(blogObj.blid);
+                console.log("This should work now.");
                 res.send({
                   success: true,
                 });

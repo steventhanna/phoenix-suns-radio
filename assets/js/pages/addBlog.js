@@ -22,18 +22,47 @@ $(document).ready(function() {
       updateOnEmptySelection: false
     },
     spellcheck: true,
-    placeholder: {
-      text: "Write your post here"
-    }
+
   });
 
 
   $("#addBlogButton").click(function() {
     // Get the contents
-    editor.selectAllContents();
-    var contents = editor.exportSelection();
-    console.log(contents);
-    console.log(editor.selectAllContents());
+    var data = editor.serialize();
+    console.log(data);
+    var blogContents = data['element-0'].value;
+    var title = $("#title").val();
+    var errors = false;
+    if (title == undefined || title == " ") {
+      swal("Uh-oh!", "No blog title entered.", "error");
+      errors = true;
+    }
+    if (blogContents = undefined || blogContents == " ") {
+      swal("Uh-oh!", "No contents for the blog was entered.", "error");
+      errors = true;
+    }
+    if (errors = false) {
+      console.log("NO ERROR");
+      var postObj = {
+        title: title,
+        contents: blogContents
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/blog/new',
+        data: postObj,
+        success: function(data) {
+          if (data.success == false) {
+            swal("Uh-oh", "There was an error creating a new blog post.", "error");
+          } else {
+            swal("Success", "It should have been successful", "success");
+          }
+        },
+        error: function(data) {
+          swal("Uh-oh", "There was an error creating a new blog post.", "error");
+        }
+      });
+    }
   });
 
   $("#updateAboutButton").click(function() {
