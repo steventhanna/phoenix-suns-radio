@@ -19,11 +19,10 @@
     <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
   <%} else { %>
     <% for(var i = 0; i < blogs.length; i++) { %>
-      <h1><%= blogs[i].title %></h1>
-      <h3><%= blogs[i].author %></h3>
-      <h5><%= blogs[i].lastUpdated %></h5>
-      <p><%- blogs[i].preview %></p>
-      <a href="/blog/<%= blogs[i].id %>">Read More</a>
+      <center><h1 style="margin-bottom: 20px;"><%= blogs[i].title %></h1></center>
+      <center><h4>By <%= blogs[i].author %> | <%= blogs[i].lastUpdated %></h4></center>
+      <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
+      <center><a class="btn btn-lg btn-default" href="/blog/<%= blogs[i].id %>">Read More</a></center>
     <% } %>
   <% } %>
 </div>

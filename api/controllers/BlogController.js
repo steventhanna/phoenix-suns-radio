@@ -33,6 +33,7 @@ module.exports = {
             var display = "";
             if (post.contents.length > 300) {
               display = post.contents.splice(0, 300);
+              console.log(display);
             } else {
               display = post.contents;
             }

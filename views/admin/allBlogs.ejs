@@ -21,8 +21,9 @@
       </center>
       <% } else { %>
         <% for (var i = 0; i < blogs.length; i++) { %>
-          <h1><%= blogs[i].title %> <a href="#" class="pull-right btn btn-md btn-primary">Edit</a></h1>
+          <h2><%= blogs[i].title %> <a href="#" class="pull-right btn btn-md btn-primary">Edit</a></h2>
           <h4>By <strong><%= blogs[i].author %></strong></h4>
+          <br />
           <p><%- blogs[i].contents %></p>
         <% } %>
       <% } %>
