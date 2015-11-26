@@ -36,5 +36,9 @@ module.exports = {
     lastUpdated: {
       type: 'string'
     },
+
+    slice: {
+      type: 'boolean'
+    },
   }
 };

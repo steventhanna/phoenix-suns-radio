@@ -22,7 +22,9 @@
       <center><h1 style="margin-bottom: 20px;"><%= blogs[i].title %></h1></center>
       <center><h4>By <%= blogs[i].author %> | <%= blogs[i].lastUpdated %></h4></center>
       <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
-      <center><a class="btn btn-lg btn-default" href="/blog/<%= blogs[i].id %>">Read More</a></center>
+      <% if (blogs[i].slice == true) { %>
+        <center><a style="margin-bottom: 20px;" class="btn btn-lg btn-default" href="/blog/<%= blogs[i].id %>">Read More</a></center>
+      <% } %>
     <% } %>
   <% } %>
 </div>

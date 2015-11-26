@@ -31,9 +31,10 @@ module.exports = {
           } else {
             // Create the blog object
             var display = "";
-            if (post.contents.length > 300) {
-              display = post.contents.splice(0, 300);
-              console.log(display);
+            var slice = false;
+            if (post.contents.length > 500) {
+              display = post.contents.substring(0, 500);
+              slice = true;
             } else {
               display = post.contents;
             }
@@ -41,6 +42,7 @@ module.exports = {
               title: post.title,
               author: user.displayName,
               contents: post.contents,
+              slice: slice,
               preview: display,
               blid: Math.floor(Math.random() * 1000000000000000000000),
               lastUpdated: moment().format("MM-DD-YYYY"),
