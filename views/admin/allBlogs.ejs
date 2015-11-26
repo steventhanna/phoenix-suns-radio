@@ -14,15 +14,16 @@
           <a href="/add-blog" class="btn btn-success btn-md">Add Blog Post</a>
         </div>
       </h1>
-
-
-      <br/>
       <% if (blogs.length == 0) { %>
       <center>
+        <br />
         <a href="/add-blog" class="btn btn-success btn-lg">Add Blog Post</a>
       </center>
       <% } else { %>
         <% for (var i = 0; i < blogs.length; i++) { %>
+          <h1><%= blogs[i].title %> <a href="#" class="pull-right btn btn-md btn-primary">Edit</a></h1>
+          <h4>By <strong><%= blogs[i].author %></strong></h4>
+          <p><%- blogs[i].contents %></p>
         <% } %>
       <% } %>
   </div>

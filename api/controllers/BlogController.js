@@ -5,10 +5,11 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var moment = require('moment');
+
 module.exports = {
 
   new: function(req, res) {
-    console.log("TRIGGER");
     var post = req.body;
     User.findOne({
       id: req.user.id
@@ -41,6 +42,7 @@ module.exports = {
               contents: post.contents,
               preview: display,
               blid: Math.floor(Math.random() * 1000000000000000000000),
+              lastUpdated: moment().format("MM-DD-YYYY"),
             };
             console.log(blogObj);
 

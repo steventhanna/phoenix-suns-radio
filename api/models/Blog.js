@@ -32,5 +32,9 @@ module.exports = {
     author: {
       type: 'string'
     },
+
+    lastUpdated: {
+      type: 'string'
+    },
   }
 };

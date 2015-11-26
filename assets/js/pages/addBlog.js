@@ -29,20 +29,20 @@ $(document).ready(function() {
   $("#addBlogButton").click(function() {
     // Get the contents
     var data = editor.serialize();
-    console.log(data);
-    var blogContents = data['element-0'].value;
+    var blogContents = data['editor'].value;
     var title = $("#title").val();
     var errors = false;
     if (title == undefined || title == " ") {
       swal("Uh-oh!", "No blog title entered.", "error");
       errors = true;
     }
-    if (blogContents = undefined || blogContents == " ") {
+    console.log(title);
+    if (blogContents == undefined || blogContents == " ") {
       swal("Uh-oh!", "No contents for the blog was entered.", "error");
       errors = true;
     }
-    if (errors = false) {
-      console.log("NO ERROR");
+    console.log(blogContents);
+    if (errors == false) {
       var postObj = {
         title: title,
         contents: blogContents
@@ -54,8 +54,6 @@ $(document).ready(function() {
         success: function(data) {
           if (data.success == false) {
             swal("Uh-oh", "There was an error creating a new blog post.", "error");
-          } else {
-            swal("Success", "It should have been successful", "success");
           }
         },
         error: function(data) {
