@@ -1,0 +1,20 @@
+<% include parts/depend %>
+<% include parts/navbar %>
+
+<script src="/js/dependencies/marked.js"></script>
+
+<div class="small-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1><%= currentBlog.title %></h1>
+        <h3>By <strong><%= currentBlog.author %></strong> | <%= currentBlog.lastUpdated %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <br />
+  <%- currentBlog.contents %>
+</div>

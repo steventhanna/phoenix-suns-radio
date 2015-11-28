@@ -32,8 +32,8 @@ module.exports = {
             // Create the blog object
             var display = "";
             var slice = false;
-            if (post.contents.length > 500) {
-              display = post.contents.substring(0, 500);
+            if (post.contents.length > 1000) {
+              display = post.contents.substring(0, 1000);
               slice = true;
             } else {
               display = post.contents;
@@ -235,7 +235,8 @@ module.exports = {
 
     // Get the url
     var array = url.split("/");
-    var blid = array[array.length];
+    // Get the blog id to look up the blog
+    var blid = array[array.length - 1];
 
     Blog.findOne({
       blid: blid
@@ -246,7 +247,8 @@ module.exports = {
         res.serverError();
       } else {
         res.view('landing/currentBlog', {
-          currentBlog: currentBlog
+          currentBlog: currentBlog,
+          currentPage: 'currentBlog'
         });
       }
     });

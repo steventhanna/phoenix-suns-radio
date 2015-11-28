@@ -24,7 +24,7 @@
       <hr>
       <% if (blogs[i].slice == true) { %>
         <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
-        <center><a style="margin-bottom: 20px;" class="btn btn-lg btn-default" href="/blog/<%= blogs[i].id %>">Read More</a></center>
+        <center><a style="margin-top: 20px; margin-bottom: 20px;" class="btn btn-lg btn-default" href="/blog/<%= blogs[i].blid %>">Read More</a></center>
       <% } else { %>
         <p style="margin-bottom: 20px;"><%- blogs[i].contents %></p>
         <% } %>
