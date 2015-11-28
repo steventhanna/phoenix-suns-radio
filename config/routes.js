@@ -158,6 +158,11 @@ module.exports.routes = {
     action: 'newBlogPage'
   },
 
+  'GET /blog/edit/:blogID': {
+    controller: 'blog',
+    action: 'displayEdit'
+  },
+
 
 
 };

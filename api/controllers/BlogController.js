@@ -231,9 +231,10 @@ module.exports = {
 
   displayBlog: function(req, res) {
     var post = req.body;
-    var url = req.url;
 
     // Get the url
+    var url = req.url;
+
     var array = url.split("/");
     // Get the blog id to look up the blog
     var blid = array[array.length - 1];
@@ -272,4 +273,40 @@ module.exports = {
       }
     });
   },
+
+  displayEdit: function(req, res) {
+    var post = req.body;
+
+    // Get the URL
+    var url = req.url;
+
+    var array = url.split("/");
+    // Get the blog id to look up the blog
+    var blid = array[array.length - 1];
+
+    User.findOne({ id: req.user.id }).exec(function(err, user) {
+      if (err || user == undefined) {
+        console.log("There was an error looking up the logged in user.");
+        console.log("Error = " + err);
+        console.log("Error Code: 00001");
+        res.serverError();
+      } else {
+        Blog.findOne({ blid: blid }).exec(function(err, currentBlog) {
+          if (err || currentBlog == undefined) {
+            console.log("There was an error looking up the current blog.");
+            console.log("Error = " + err);
+            res.serverError();
+          } else {
+            res.view('admin/editBlog', {
+              user: user,
+              currentPage: 'blog',
+              currentSidebar: 'editBlog',
+              currentBlog: currentBlog
+            });
+          }
+        });
+      }
+    });
+  },
+  
 };
