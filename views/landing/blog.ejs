@@ -19,13 +19,15 @@
     <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
   <%} else { %>
     <% for(var i = 0; i < blogs.length; i++) { %>
-      <center><h1 style="margin-bottom: 20px;"><%= blogs[i].title %></h1></center>
-      <center><h4>By <%= blogs[i].author %> | <%= blogs[i].lastUpdated %></h4></center>
-      <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
+      <h1 class="blog-header"><%= blogs[i].title %></h1>
+      <h4>By <%= blogs[i].author %> | <%= blogs[i].lastUpdated %></h4>
+      <hr>
       <% if (blogs[i].slice == true) { %>
+        <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
         <center><a style="margin-bottom: 20px;" class="btn btn-lg btn-default" href="/blog/<%= blogs[i].id %>">Read More</a></center>
-      <% } %>
+      <% } else { %>
+        <p style="margin-bottom: 20px;"><%- blogs[i].contents %></p>
+        <% } %>
     <% } %>
-    
   <% } %>
 </div>

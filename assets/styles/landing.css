@@ -74,7 +74,6 @@ body {
 .header h3 {
   font-weight: 300;
   margin-bottom: 50px;
-
 }
 
 .row-title {
@@ -120,4 +119,12 @@ hr {
 .cast-panel p {
   font-size: 16px;
   color: #000;
+}
+
+.blog-header {
+  color: #e86225;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
