@@ -41,9 +41,11 @@ module.exports = {
           user.username = post.email;
           changes = true;
         }
-        if (post.password != undefined && post.password !== " ") {
+        if (post.password != undefined && post.password !== " " && post.password !== "" && post.password != null) {
           user.password = post.password;
           changes = true;
+        } else {
+          console.log("No password updates");
         }
         user.firstName = post.firstName;
         user.lastName = post.lastName;

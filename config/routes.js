@@ -163,6 +163,11 @@ module.exports.routes = {
     action: 'displayEdit'
   },
 
+  'POST /user/edit': {
+    controller: 'user',
+    action: 'editAccount'
+  },
+
 
 
 };
