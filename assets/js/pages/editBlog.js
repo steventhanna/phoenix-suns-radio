@@ -7,7 +7,7 @@ $(document).ready(function() {
                if nothing is passed this is what is used */
       allowMultiParagraphSelection: true,
       buttons: [
-        'bold', 'italic', 'underline', 'anchor', 'h1', 'h2', 'h3', 'quote'
+        'bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'
       ],
       diffLeft: 0,
       diffTop: -10,
@@ -25,6 +25,44 @@ $(document).ready(function() {
   });
 
   $("#deleteBlogButton").click(function() {
+    var blid = document.getElementById("blid").innerHTML;
+    var postObj = {
+      blid: blid
+    };
+
+    swal({
+      title: "Delete?",
+      text: "Are you sure you want to delete this blog post?",
+      type: "warning",
+      showCancelButton: true,
+      showLoaderOnConfirm: true,
+    }, function() {
+      setTimeout(function() {
+        $.ajax({
+          type: 'POST',
+          url: '/blog/remove',
+          data: postObj,
+          success: function(data) {
+            if (data.success == true) {
+              swal({
+                title: "Success!",
+                text: "The blog post has been successfully deleted.",
+                type: "success",
+                showCancelButton: false,
+                closeOnConfirm: false
+              }, function() {
+                window.location.href = '/blog-settings';
+              });
+            } else {
+              swal("Uh-Oh!", "Unable to delete the blog post.", "error");
+            }
+          },
+          error: function(data) {
+            swal("Uh-Oh!", "Unable to delete the blog post.", "error");
+          }
+        });
+      }, 2000);
+    });
 
   });
 
