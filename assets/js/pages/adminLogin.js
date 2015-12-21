@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
   $("#loginButton").click(function() {
     var email = $("#email").val();
     var password = $("#password").val();
@@ -18,9 +20,12 @@ $(document).ready(function() {
         if (data.success == true) {
           window.location.href = "/dashboard";
         } else {
-          swal("Uh-Oh!", "The account could not be logged in.", "error");
+          if (data.errorMessage == "INVALID PASSWORD") {
+            swal("Uh-Oh!", "The username or password is not correct.", "error");
+          } else {
+            swal("Uh-Oh!", "The account could not be logged in.", "error");
+          }
         }
-
       },
       error: function(data) {
         console.log(data);

@@ -64,12 +64,11 @@ module.exports = {
         console.log("err = " + err);
         console.log("info = ");
         console.log(info);
-        res.serverError();
         res.send({
           success: false,
           user: undefined,
           error: true,
-          errorMessage: "This user does not exist or there was some sort of error.",
+          errorMessage: err,
           info: info,
           status: 500,
         });

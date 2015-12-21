@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var bcrypt = require('bcrypt');
+
 module.exports = {
 
   /**
@@ -41,15 +43,36 @@ module.exports = {
           user.username = post.email;
           changes = true;
         }
+        console.log(post.password);
         if (post.password != undefined && post.password !== " " && post.password !== "" && post.password != null) {
-          user.password = post.password;
+          // generate a salt
+          bcrypt.genSalt(10, function(err, salt) {
+            if (err) return next(err);
+
+            // hash the password along with our new salt
+            bcrypt.hash(user.password, salt, function(err, hash) {
+              if (err) return next(err);
+
+              // override the cleartext password with the hashed one
+              user.password = hash;
+              next();
+            });
+          });
           changes = true;
+          console.log(user.password);
         } else {
           console.log("No password updates");
         }
-        user.firstName = post.firstName;
-        user.lastName = post.lastName;
-        user.displayName = post.firstName + " " + post.lastName;
+        if (post.firstName != undefined && post.firstName !== " " && post.firstName !== "" && post.firstName != null) {
+          user.firstName = post.firstName;
+          user.displayName = user.firstName + " " + user.lastName;
+          changes = true;
+        }
+        if (post.lastName != undefined && post.lastName !== " " && post.lastName !== "" && post.lastName != null) {
+          user.lastName = post.lastName;
+          user.displayName = user.firstName + " " + user.lastName;
+          changes = true;
+        }
         if (changes == true) {
           user.save(function(err) {
             if (err) {
