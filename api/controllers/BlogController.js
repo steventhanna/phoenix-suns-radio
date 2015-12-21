@@ -106,14 +106,14 @@ module.exports = {
             console.log("Error Code: 0016");
             res.serverError();
           } else {
-            var updated = false;
+            var changes = false;
             if (updated(post.title) == true) {
               currentBlog.title = post.title;
-              updated = true;
+              changes = true;
             }
             if (updated(post.contents) == true) {
               currentBlog.contents = post.contents;
-              updated = true;
+              changes = true;
             }
 
             if (changes == true) {
@@ -284,14 +284,18 @@ module.exports = {
     // Get the blog id to look up the blog
     var blid = array[array.length - 1];
 
-    User.findOne({ id: req.user.id }).exec(function(err, user) {
+    User.findOne({
+      id: req.user.id
+    }).exec(function(err, user) {
       if (err || user == undefined) {
         console.log("There was an error looking up the logged in user.");
         console.log("Error = " + err);
         console.log("Error Code: 00001");
         res.serverError();
       } else {
-        Blog.findOne({ blid: blid }).exec(function(err, currentBlog) {
+        Blog.findOne({
+          blid: blid
+        }).exec(function(err, currentBlog) {
           if (err || currentBlog == undefined) {
             console.log("There was an error looking up the current blog.");
             console.log("Error = " + err);
@@ -308,5 +312,5 @@ module.exports = {
       }
     });
   },
-  
+
 };

@@ -1,0 +1,35 @@
+<link href="/styles/dashboard.css" rel="stylesheet">
+<script src="http://cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+<link charset="utf-8" href="http://cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" media="screen" rel="stylesheet" type="text/css">
+<link href="/styles/flat.min.css" rel="stylesheet">
+
+<% include parts/navbar.ejs %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <% include parts/blogSidebar.ejs %>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <!-- Main content -->
+      <h1 class="page-header">Edit Blog Post
+        <div class="pull-right">
+          <a class="btn btn-danger btn-md" id="deleteBlogButton">Delete Blog Post</a>
+          <a class="btn btn-success btn-md" id="saveBlogButton">Save Blog Post</a>
+        </div>
+      </h1>
+      <div class="hidden" id="blid"><%- currentBlog.blid %></div>
+
+      <form class="form-group">
+        <h1>
+          <label style="margin-bottom: 20px;" for="title">Title</label>
+          <input class="form-control" id="title" value="<%= currentBlog.title%>">
+        </h1>
+      </form>
+      <h1><label>Contents</label></h1>
+      <div id="editor" class="editable" data-medium-focused="true"><%- currentBlog.contents %></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/pages/editBlog.js"></script>
