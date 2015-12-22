@@ -1,0 +1,38 @@
+body {
+  background-color: #391366;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+  margin-top: 15%;
+}
+
+h1 {
+  color: #e86225;
+  text-align: center;
+  font-weight: 400;
+  font-size: 175px;
+}
+
+h2 {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  font-size: 50px;
+}
+
+p {
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+.btn-return {
+  margin-top: 35px;
+  color: #391366;
+  font-size: 24px;
+  padding-left: 25px;
+  padding-right: 25px;
+}

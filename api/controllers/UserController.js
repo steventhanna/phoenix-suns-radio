@@ -57,7 +57,7 @@ module.exports = {
               user.password = hash;
               next();
             });
-          });
+          }, next());
           changes = true;
           console.log(user.password);
         } else {
