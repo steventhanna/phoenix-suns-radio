@@ -2,6 +2,7 @@
 <% include parts/navbar %>
 
 <script src="/js/dependencies/marked.js"></script>
+<script src="/js/dependencies/moment.js"></script>
 
 <div class="small-header">
   <div class="container">
@@ -13,23 +14,80 @@
   </div>
 </div>
 
-<div class="container">
-  <br />
-  <% if (blogs.length == 0) { %>
-    <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
-  <%} else { %>
-    <% for(var i = 0; i < blogs.length; i++) { %>
-      <div class="blog">
-        <h1 class="blog-header"><%= blogs[i].title %></h1>
-        <h4>By <%= blogs[i].author %> | <%= blogs[i].lastUpdated %></h4>
 
-        <% if (blogs[i].slice == true) { %>
-          <p style="margin-bottom: 20px;"><%- blogs[i].preview %></p>
-          <center><a style="margin-top: 20px; margin-bottom: 20px;" class="btn btn-lg btn-default" href="/blog/<%= blogs[i].blid %>">Read More</a></center>
-        <% } else { %>
-          <p style="margin-bottom: 20px;"><%- blogs[i].contents %></p>
-          <% } %>
+<% if (blogs.length == 0) { %>
+  <div class="container">
+    <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
+  </div>
+<% } else { %>
+  <% for (var i = 0; i < blogs.length; i++) { %>
+    <% if (i == blogs.length) { %>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="blog-card-white">
+            <div class="container-fluid">
+              <div class="heading">
+                <h1><%= blogs[i].title %></h1>
+                <h3>By <%= blogs[i].author %></h3>
+                <p><%= blogs[i].lastUpdated %></p>
+            </div>
+            <hr>
+            <div class="body">
+              <% if (blogs[i].slice == true) { %>
+                <%- blogs[i].preview %>
+              <% }  else { %>
+                <%- blogs[i].contents %>
+              <% } %>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <% } else if (i % 2 == 0) { %>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="blog-card-white">
+            <div class="container-fluid">
+              <div class="heading">
+                <h1><%= blogs[i].title %></h1>
+                <h3>By <%= blogs[i].author %></h3>
+              </div>
+              <hr>
+              <div class="body">
+                <% if (blogs[i].slice == true) { %>
+                  <%- blogs[i].preview %>
+                <% }  else { %>
+                  <%- blogs[i].contents %>
+                <% } %>
+               </div>
+               <div class="footer">
+                 <p><%= blogs[i].lastUpdated %></p>
+               </div>
+             </div>
+          </div>
+        </div>
+    <% } else if (i % 2 == 1) { %>
+        <div class="col-lg-6">
+          <div class="blog-card-grey">
+            <div class="container-fluid">
+              <div class="heading">
+                <h1><%= blogs[i].title %></h1>
+                <h3>By <%= blogs[i].author %></h3>
+                <p><%= blogs[i].lastUpdated %></p>
+              </div>
+              <hr>
+              <div class="body">
+                <% if (blogs[i].slice == true) { %>
+                  <%- blogs[i].preview %>
+                <% }  else { %>
+                  <%- blogs[i].contents %>
+                <% } %>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
     <% } %>
   <% } %>
-</div>
+<% } %>

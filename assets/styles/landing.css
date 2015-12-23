@@ -137,3 +137,69 @@ hr {
   border-bottom-style: solid;
   border-bottom-color: #3f3f3f;
 }
+
+.blog-card-white {
+  background-color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 16%;
+  height: 100%;
+  width: auto;
+}
+
+.blog-card-white .heading {
+  margin-bottom: 15px;
+}
+
+
+
+.blog-card-white .heading h1 {
+  font-weight: 300;
+  font-size: 45px;
+}
+
+.blog-card-white .heading h3 {
+  font-weight: 300;
+
+}
+
+.blog-card-white .footer {
+  text-align: right;
+}
+
+.blog-card-white .footer p {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.blog-card-white hr {
+  height: 1px;
+  background: #3f3f3f;
+  width: 100px;
+  margin-left: 0px;
+}
+
+.blog-card-grey {
+  /*background-color: #f0eded;*/
+  background-color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 15%;
+  height: 100%;
+  width: auto;
+}
+
+.blog-card-grey .heading {
+  margin-bottom: 15px;
+}
+
+.blog-card-grey .heading h1 {
+  font-weight: 300;
+}
+
+.blog-card-grey hr {
+  height: 1px;
+  background: #3f3f3f;
+  width: 100px;
+  margin-left: 0px;
+}
