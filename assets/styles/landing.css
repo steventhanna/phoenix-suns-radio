@@ -160,7 +160,6 @@ hr {
 
 .blog-card-white .heading h3 {
   font-weight: 300;
-
 }
 
 .blog-card-white .footer {
@@ -185,6 +184,7 @@ hr {
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 15%;
+  margin-right: 10px;
   height: 100%;
   width: auto;
 }
@@ -197,9 +197,29 @@ hr {
   font-weight: 300;
 }
 
+.blog-card-grey .heading h3 {
+  font-weight: 300;
+}
+
 .blog-card-grey hr {
   height: 1px;
   background: #3f3f3f;
   width: 100px;
   margin-left: 0px;
+}
+
+.blog-card-grey .footer {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.blog-card-grey .footer p {
+  font-weight: 300;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+/* Fixes weird styling issue on blog page */
+.row {
+  margin-right: 0px;
 }
