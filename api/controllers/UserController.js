@@ -215,6 +215,22 @@ module.exports = {
   },
 
   blog: function(req, res) {
+    /**
+     * Sort an array of objects based on a specified property
+     * @param property :: the property to sort the array of objects by
+     */
+    function dynamicSort(property) {
+      var sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
+    }
+
     Page.findOne({
       pid: "phoenix-suns-radio"
     }).exec(function(err, currentPage) {
@@ -229,6 +245,7 @@ module.exports = {
           while (found.length) {
             blogs.push(found.pop());
           }
+          blogs.sort(dynamicSort("updatedAt"));
           res.view('landing/blog', {
             currentPage: 'blog',
             blogs: blogs

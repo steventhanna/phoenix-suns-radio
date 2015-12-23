@@ -10,6 +10,22 @@ var moment = require('moment');
 module.exports = {
 
   new: function(req, res) {
+    /**
+     * Sort an array of objects based on a specified property
+     * @param property :: the property to sort the array of objects by
+     */
+    function dynamicSort(property) {
+      var sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
+    }
+
     var post = req.body;
     User.findOne({
       id: req.user.id
@@ -65,9 +81,17 @@ module.exports = {
                   currentPage.blogs = [];
                 }
                 currentPage.blogs.push(blogObj.blid);
-                console.log("This should work now.");
-                res.send({
-                  success: true,
+                currentPage.save(function(err) {
+                  if (err) {
+                    console.log("Current page could not be saved after adding a new blog post.");
+                    console.log("Error = " + err);
+                    res.serverError();
+                  } else {
+                    console.log("This should work now.");
+                    res.send({
+                      success: true,
+                    });
+                  }
                 });
               }
             });
@@ -78,6 +102,23 @@ module.exports = {
   },
 
   edit: function(req, res) {
+
+    /**
+     * Sort an array of objects based on a specified property
+     * @param property :: the property to sort the array of objects by
+     */
+    function dynamicSort(property) {
+      var sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
+    }
+
     var post = req.body;
 
     function updated(toCheck) {
@@ -193,6 +234,22 @@ module.exports = {
   },
 
   settings: function(req, res) {
+    /**
+     * Sort an array of objects based on a specified property
+     * @param property :: the property to sort the array of objects by
+     */
+    function dynamicSort(property) {
+      var sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
+    }
+
     User.findOne({
       id: req.user.id
     }).exec(function(err, user) {
@@ -215,6 +272,7 @@ module.exports = {
               while (found.length) {
                 blogs.push(found.pop());
               }
+              blogs.sort(dynamicSort("updatedAt"));
               res.view('admin/allBlogs', {
                 user: user,
                 currentPage: 'allBlogs',

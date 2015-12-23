@@ -21,100 +21,45 @@
       <center><h1 style="font-weight: 300">No Blog Posts</h1></center>
     </div>
   <% } else { %>
-    <% for (var i = 0; i < blogs.length; i++) { %>
-      <% if (i == blogs.length) { %>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="blog-card-white">
-              <div class="container-fluid">
-                <div class="heading">
-                  <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
-                  <h3>By <%= blogs[i].author %></h3>
-                  <p id="lastUpdated<%= i %>"><%= blogs[i].lastUpdated %></p>
-                  <script>
-                    // Relative time
-                    var text = document.getElementById("lastUpdated<%= i %>").innerHTML;
-                    console.log(text);
-                    document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
-                  </script>
-              </div>
-              <hr>
-              <div class="body">
-                <% if (blogs[i].slice == true) { %>
-                  <%- blogs[i].preview %>
-                <% }  else { %>
-                  <%- blogs[i].contents %>
-                <% } %>
-              </div>
+    <div class="container">
+    <% for (var i = blogs.length - 1; i > 0; i--) { %>
+      <center>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="blog-card">
+            <div class="heading">
+              <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
+              <h3>By <%= blogs[i].author %> | <span id="lastUpdated<%= i %>"><%= blogs[i].lastUpdated %></span></h3>
+              <script>
+                // Relative time
+                var text = document.getElementById("lastUpdated<%= i %>").innerHTML;
+                console.log(text);
+                var currentDate = moment().format("MM-DD-YYYY");
+                console.log("CURRENT DATE: " + currentDate);
+                if (text === currentDate) {
+                  document.getElementById("lastUpdated<%= i %>").innerHTML = "Today";
+                } else {
+                  document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
+                }
+              </script>
+            </div>
+            <div class="body">
+              <% if (blogs[i].slice == true) { %>
+                <%- blogs[i].preview %>
+              <% } else { %>
+                <%- blogs[i].contents %>
+              <% } %>
+            </div>
+            <div class="footer">
+              <% if (blogs[i].slice == true) { %>
+                <a href="/blog/<%= blogs[i].blid %>">Read More</a>
+              <% } %>
             </div>
           </div>
         </div>
       </div>
-
-      <% } else if (i % 2 == 0) { %>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="blog-card-white">
-              <div class="container-fluid">
-                <div class="heading">
-                  <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
-                  <h3>By <%= blogs[i].author %></h3>
-                </div>
-                <hr>
-                <div class="body">
-                  <% if (blogs[i].slice == true) { %>
-                    <%- blogs[i].preview %>
-                  <% }  else { %>
-                    <%- blogs[i].contents %>
-                  <% } %>
-                 </div>
-                 <div class="footer">
-                   <p id="lastUpdated<%= i %>"><%= blogs[i].lastUpdated %></p>
-                 </div>
-                 <script>
-                   // Relative time
-                   var text = document.getElementById("lastUpdated<%= i %>").innerHTML;
-                   console.log(text);
-                   var currentDate = moment().format("MM-DD-YYYY");
-                   console.log("CURRENT DATE: " + currentDate);
-                   if (text === currentDate) {
-                     document.getElementById("lastUpdated<%= i %>").innerHTML = "Today";
-                   } else {
-                     document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
-                   }
-                 </script>
-               </div>
-            </div>
-          </div>
-      <% } else if (i % 2 == 1) { %>
-          <div class="col-lg-6">
-            <div class="blog-card-grey">
-              <div class="container-fluid">
-                <div class="heading">
-                  <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
-                  <h3>By <%= blogs[i].author %></h3>
-                </div>
-                <hr>
-                <div class="body">
-                  <% if (blogs[i].slice == true) { %>
-                    <%- blogs[i].preview %>
-                  <% }  else { %>
-                    <%- blogs[i].contents %>
-                  <% } %>
-                 </div>
-                 <div class="footer">
-                   <p id="lastUpdated<%= i %>"><%= blogs[i].lastUpdated %></p>
-                 </div>
-                 <script>
-                   // Relative time
-                   var text = document.getElementById("lastUpdated<%= i %>").innerHTML;
-                   document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
-                 </script>
-               </div>
-            </div>
-          </div>
-        </div>
+    </center>
       <% } %>
-    <% } %>
+    </div>
   <% } %>
 </div>

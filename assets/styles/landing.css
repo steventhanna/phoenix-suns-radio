@@ -138,86 +138,79 @@ hr {
   border-bottom-color: #3f3f3f;
 }
 
-.blog-card-white {
+.blog-card {
   background-color: #fff;
   padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 16%;
-  height: 100%;
-  width: auto;
+  width: 75%;
 }
 
-.blog-card-white .heading {
+.blog-card .heading {
+  margin-bottom: 30px;
+}
+
+.blog-card .heading h1 {
+  font-weight: 300;
+  font-size: 32px;
+  text-align: center;
   margin-bottom: 15px;
 }
 
+.blog-card .heading h1 a {
+  color: #e86225;
+}
 
+.blog-card .heading h1 a:hover {
+  color: #391366;
+  text-decoration: none;
+}
 
-.blog-card-white .heading h1 {
+.blog-card .heading h3 {
   font-weight: 300;
-  font-size: 45px;
+  text-align: left;
+  font-size: 18px;
+  margin-top: 0px;
 }
 
-.blog-card-white .heading h3 {
+.blog-card .body {
+  text-align: left;
+}
+
+.blog-card .body p {
+  font-size: 16px;
+}
+
+.blog-card .footer {
+  text-align: left;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.blog-card .footer a {
+  color: #391366;
+  text-align: left;
+  font-size: 18px;
   font-weight: 300;
 }
 
-.blog-card-white .footer {
-  text-align: right;
+.blog-card .footer a:hover {
+  color: #e86225;
+  text-decoration: none;
+  text-align: left;
 }
 
-.blog-card-white .footer p {
+.blog-card .footer p {
   font-weight: 300;
   font-size: 16px;
 }
 
-.blog-card-white hr {
+.blog-card hr {
   height: 1px;
   background: #3f3f3f;
   width: 100px;
   margin-left: 0px;
 }
 
-.blog-card-grey {
-  /*background-color: #f0eded;*/
-  background-color: #fff;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 15%;
-  margin-right: 10px;
-  height: 100%;
-  width: auto;
-}
 
-.blog-card-grey .heading {
-  margin-bottom: 15px;
-}
-
-.blog-card-grey .heading h1 {
-  font-weight: 300;
-}
-
-.blog-card-grey .heading h3 {
-  font-weight: 300;
-}
-
-.blog-card-grey hr {
-  height: 1px;
-  background: #3f3f3f;
-  width: 100px;
-  margin-left: 0px;
-}
-
-.blog-card-grey .footer {
-  text-align: right;
-  margin-right: 10px;
-}
-
-.blog-card-grey .footer p {
-  font-weight: 300;
-  font-size: 16px;
-  margin-right: 30px;
-}
 
 /* Fixes weird styling issue on blog page */
 .row {
