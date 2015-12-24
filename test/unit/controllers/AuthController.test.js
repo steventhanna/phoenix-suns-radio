@@ -43,15 +43,15 @@ describe('AuthController', function() {
         .expect(200, done)
     });
   });
-  describe('#login', function() {
-    it('should fail to login to an account becuase of a bad password', function(done) {
-      request(sails.hooks.http.app)
-        .post('/login')
-        .send({
-          username: 'example@email.com',
-          password: 'pass'
-        })
-        .expect(500, done)
-    });
-  });
+  // describe('#login', function() {
+  //   it('should fail to login to an account becuase of a bad password', function(done) {
+  //     request(sails.hooks.http.app)
+  //       .post('/login')
+  //       .send({
+  //         username: 'example@email.com',
+  //         password: 'pass'
+  //       })
+  //       .expect(500, done)
+  //   });
+  // });
 });
