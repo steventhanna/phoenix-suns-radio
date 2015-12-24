@@ -2,19 +2,45 @@
 <% include parts/navbar %>
 
 <script src="/js/dependencies/marked.js"></script>
+<script src="/js/dependencies/moment.js"></script>
 
-<div class="small-header">
+<div class="blog-row-container">
+
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1><%= currentBlog.title %></h1>
-        <h3>By <strong><%= currentBlog.author %></strong> | <%= currentBlog.lastUpdated %></h3>
+    <center>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="blog-card">
+            <div class="heading">
+              <h1>
+                <a href="/blog/<%= currentBlog.blid %>"><%= currentBlog.title %></a>
+              </h1>
+              <h3>By
+                <%= currentBlog.author %>
+                |
+                <span id="lastUpdated"><%= currentBlog.lastUpdated %></span>
+              </h3>
+              <script>
+                // Relative time
+                var text = document.getElementById("lastUpdated").innerHTML;
+                console.log(text);
+                var currentDate = moment().format("MM-DD-YYYY");
+                console.log("CURRENT DATE: " + currentDate);
+                if (text === currentDate) {
+                  document.getElementById("lastUpdated").innerHTML = "Today";
+                } else {
+                  document.getElementById("lastUpdated").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
+                }
+              </script>
+            </div>
+            <div class="body">
+              <%- currentBlog.contents %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <br />
+      <a class="btn btn-default btn-lg" href="/blog">Return to All Blog Posts</a>
+    </center>
   </div>
-</div>
-
-<div class="container">
-  <br />
-  <%- currentBlog.contents %>
 </div>
