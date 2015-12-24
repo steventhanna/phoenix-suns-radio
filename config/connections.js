@@ -58,11 +58,12 @@ module.exports.connections = {
    ***************************************************************************/
   someMongodbServer: {
     adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
+    // host: 'localhost',
+    // port: 27017,
     // user: 'username',
     // password: 'password',
-    database: 'phoenix-suns-radio'
+    // database: 'phoenix-suns-radio'
+    url: "mongodb://dbUser:gorilla@candidate.61.mongolayer.com:10369,candidate.62.mongolayer.com:10054/phoneix-suns-radio?replicaSet=set-567c4fb40926c8c8220010ce"
   },
 
   /***************************************************************************
