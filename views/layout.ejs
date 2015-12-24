@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Phoenix Suns Radio</title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <title>Phoenix Suns Radio</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- sweetalert -->
-    <link rel="stylesheet" href="/styles/sweetalert.css">
-    <script src="/js/dependencies/sweetalert.min.js"></script>
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!--
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- sweetalert -->
+  <link rel="stylesheet" href="/styles/sweetalert.css">
+  <script src="/js/dependencies/sweetalert.min.js"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-52623823-5', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <!--
         Stylesheets and Preprocessors
         ==============================
 
@@ -36,13 +53,13 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
-    <!--STYLES-->
-    
-    <!--STYLES END-->
-  </head>
+  <!--STYLES-->
 
-  <body>
-    <%- body %>
+  <!--STYLES END-->
+</head>
+
+<body>
+  <%- body %>
 
 
 
@@ -68,7 +85,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -101,5 +118,6 @@
     <script src="/js/dependencies/moment.js"></script>
     <script src="/js/dependencies/sweetalert.min.js"></script>
     <!--SCRIPTS END-->
-  </body>
+</body>
+
 </html>
