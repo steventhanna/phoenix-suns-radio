@@ -29,7 +29,7 @@
           <div class="blog-card">
             <div class="heading">
               <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
-              <h3>By <%= blogs[i].author %> | <span id="lastUpdated<%= i %>"><%= blogs[i].updatedAt %></span></h3>
+              <h3>By <%= blogs[i].author %> | <span id="lastUpdated<%= i %>"><%= blogs[i].createdAt %></span></h3>
               <script>
                 // Relative time
                 var text = moment(document.getElementById("lastUpdated<%= i %>").innerHTML);
