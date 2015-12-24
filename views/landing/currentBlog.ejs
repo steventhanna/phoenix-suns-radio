@@ -18,19 +18,13 @@
               <h3>By
                 <%= currentBlog.author %>
                 |
-                <span id="lastUpdated"><%= currentBlog.lastUpdated %></span>
+                <span id="lastUpdated"><%= currentBlog.updatedAt %></span>
               </h3>
               <script>
                 // Relative time
-                var text = document.getElementById("lastUpdated").innerHTML;
-                console.log(text);
+                var text = moment(document.getElementById("lastUpdated").innerHTML);
                 var currentDate = moment().format("MM-DD-YYYY");
-                console.log("CURRENT DATE: " + currentDate);
-                if (text === currentDate) {
-                  document.getElementById("lastUpdated").innerHTML = "Today";
-                } else {
-                  document.getElementById("lastUpdated").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
-                }
+                document.getElementById("lastUpdated").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
               </script>
             </div>
             <div class="body">

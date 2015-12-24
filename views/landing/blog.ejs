@@ -22,25 +22,19 @@
     </div>
   <% } else { %>
     <div class="container">
-    <% for (var i = blogs.length - 1; i > 0; i--) { %>
+    <% for (var i = 0; i < blogs.length; i++) { %>
       <center>
       <div class="row">
         <div class="col-lg-12">
           <div class="blog-card">
             <div class="heading">
               <h1><a href="/blog/<%= blogs[i].blid %>"><%= blogs[i].title %></a></h1>
-              <h3>By <%= blogs[i].author %> | <span id="lastUpdated<%= i %>"><%= blogs[i].lastUpdated %></span></h3>
+              <h3>By <%= blogs[i].author %> | <span id="lastUpdated<%= i %>"><%= blogs[i].updatedAt %></span></h3>
               <script>
                 // Relative time
-                var text = document.getElementById("lastUpdated<%= i %>").innerHTML;
-                console.log(text);
+                var text = moment(document.getElementById("lastUpdated<%= i %>").innerHTML);
                 var currentDate = moment().format("MM-DD-YYYY");
-                console.log("CURRENT DATE: " + currentDate);
-                if (text === currentDate) {
-                  document.getElementById("lastUpdated<%= i %>").innerHTML = "Today";
-                } else {
-                  document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
-                }
+                document.getElementById("lastUpdated<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
               </script>
             </div>
             <div class="body">

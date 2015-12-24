@@ -125,6 +125,22 @@ module.exports = {
   },
 
   broadcast: function(req, res) {
+    /**
+     * Sort an array of objects based on a specified property
+     * @param property :: the property to sort the array of objects by
+     */
+    function dynamicSort(property) {
+      var sortOrder = 1;
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+      return function(a, b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+      }
+    }
+
     var post = req.body;
     User.findOne({
       id: req.user.id
@@ -150,6 +166,8 @@ module.exports = {
               while (found.length) {
                 broadcasts.push(found.pop());
               }
+              broadcasts.sort(dynamicSort("date"));
+              broadcasts.reverse();
               res.view('admin/broadcasts', {
                 user: user,
                 page: currentPage,
@@ -246,6 +264,7 @@ module.exports = {
             blogs.push(found.pop());
           }
           blogs.sort(dynamicSort("updatedAt"));
+          blogs.reverse();
           res.view('landing/blog', {
             currentPage: 'blog',
             blogs: blogs
