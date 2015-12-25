@@ -58,7 +58,7 @@ module.exports = {
     });
   },
 
-  social: function(req, ers) {
+  social: function(req, res) {
     res.view('landing/social', {
       currentPage: 'social'
     });
