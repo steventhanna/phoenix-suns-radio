@@ -1,5 +1,6 @@
 <% include parts/depend %>
 <% include parts/navbar %>
+<script src="/js/dependencies/moment.js"></script>
 
 <div class="header">
   <div class="container">
@@ -41,13 +42,19 @@
   <div class="row cast-panel">
     <div class="col-lg-6">
       <h1><%= broadcasts[i].title %></h1>
-      <h3><%= broadcasts[i].date %></h3>
+      <h3 id="dateSpace<%= i %>"><%= broadcasts[i].date %></h3>
       <p><%= broadcasts[i].summary %></p>
     </div>
     <div class="col-lg-6 align-right">
       <%- broadcasts[i].embedCode %>
     </div>
   </div>
+  <script>
+    // Relative time
+    var text = moment(document.getElementById("dateSpace<%= i %>").innerHTML);
+    var currentDate = moment().format("MM-DD-YYYY");
+    document.getElementById("dateSpace<%= i %>").innerHTML = moment(text, "MM-DD-YYYY").fromNow();
+  </script>
   <hr>
 <% } %>
 </div>
